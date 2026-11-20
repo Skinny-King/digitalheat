@@ -18,7 +18,7 @@
 - Offen: Ob der Total-Preis die MwSt. enthält, ist auf der ElCom-Seite zu prüfen.
 
 ## MLPerf Inference (MLCommons) – Leistungsmessungen
-- Dateien: `roh/mlperf/summary_results_v5.0.json`, `_v5.1.json`, `_v6.0.json` (aus `github.com/mlcommons/inference_results_vX/summary_results.json`)
+- Dateien: `roh/mlperf/summary_results_v5.0.json`, `_v5.1.json`, `_v6.0.json` (aus `https://raw.githubusercontent.com/mlcommons/inference_results_vX/main/summary_results.json`, wegen der Grösse nicht im Repository, der Auszug schon)
 - Auszug: `mlperf_power_datacenter.csv` mit 31 Datacenter-Ergebnissen mit Leistungsmessung (v6.0 enthält keine)
 - Brauchbar für Jobtypen, Offline-Szenario:
   - Whisper (Transkription): 8× B200, 43'699 Samples/s bei 7'636 W (v5.1, Lenovo)
