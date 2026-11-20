@@ -34,7 +34,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--page); color: var(--ink);
   font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-main { max-width: 1180px; margin: 0 auto; padding: 24px 16px 64px; }
+main { max-width: 1180px; margin: 0 auto; padding-block: 24px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
 h2 { font-size: 17px; margin: 0 0 2px; }
 .sub { color: var(--ink-2); margin: 0 0 20px; }
@@ -350,9 +351,14 @@ let liveZuletzt = null;
 async function live() {
   const box = $("live");
   try {
-    const r = await fetch("live.json?" + Date.now(), { cache: "no-store" });
-    if (!r.ok) throw 0;
-    const L = await r.json(); liveZuletzt = L;
+    // Veröffentlichte Fassung: Aufzeichnung eines echten Laufs. Lokal: live.json, jede Sekunde neu.
+    let L = window.LIVE_AUFZEICHNUNG;
+    if (!L) {
+      const r = await fetch("live.json?" + Date.now(), { cache: "no-store" });
+      if (!r.ok) throw 0;
+      L = await r.json();
+    }
+    liveZuletzt = L;
     const z = L.jetzt || (L.stunden && L.stunden[L.stunden.length - 1]) || {};
     const an = L.aktiv && L.prozess === "läuft", aus = L.aktiv && L.prozess === "pausiert";
     const W = 700, H = 120, x0 = 34, x1 = W - 8, y0 = H - 20, y1 = 8;
@@ -366,7 +372,8 @@ async function live() {
       <dt>Server an</dt><dd>${z.server_laufend != null ? fmt(z.server_laufend, 2) + " von " + L.server : "–"}</dd>
       <dt>Echter Job</dt><dd>Server ${L.echter_server}, PID ${L.pid}, ${L.prozess}</dd>
       <dt>Fertig</dt><dd>${fmt(L.texte_fertig || 0)} Texte${L.aktiv ? "" : " (Checkpoint)"}</dd></dl></div>
-      <div><div class="note">Anteil jeder Stunde, in dem der echte Job rechnen durfte</div><div id="chLive"></div></div>`;
+      <div><div class="note">Anteil jeder Stunde, in dem der echte Job rechnen durfte${window.LIVE_AUFZEICHNUNG ?
+        ` (Aufzeichnung eines echten Laufs auf dem Laptop, ${L.server} Server, 1 h = ${L.sekunden_pro_stunde} s)` : ""}</div><div id="chLive"></div></div>`;
     const svg = svgNeu($("chLive"), W, H);
     yAchse(svg, x0, x1, y0, y1, 1, 2, (v) => fmt(v * 100) + " %");
     const bw = (x1 - x0) / 24;
@@ -448,7 +455,7 @@ document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click",
   S[seg.dataset.key] = b.dataset.v; alles(); }));
 document.querySelectorAll("[data-table]").forEach((b) => b.addEventListener("click", () => {
   const t = $(b.dataset.table); t.hidden = !t.hidden; b.textContent = t.hidden ? "Tabelle zeigen" : "Tabelle ausblenden"; }));
-annahmenKurz(); annahmen(); alles(); live(); setInterval(live, 1000);
+annahmenKurz(); annahmen(); alles(); live(); if (!window.LIVE_AUFZEICHNUNG) setInterval(live, 1000);
 </script>
 </body>
 </html>
