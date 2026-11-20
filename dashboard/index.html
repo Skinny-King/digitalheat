@@ -123,7 +123,7 @@ details summary { cursor: pointer; font-weight: 600; }
     <div class="ctl"><label for="pStrom">Strompreis</label>
       <div class="range"><input id="pStrom" type="range" min="10" max="60" step="0.25" value="33.25"><output id="pStromOut"></output></div></div>
     <div class="ctl"><label for="pRechen">Rechenpreis pro Server-Stunde</label>
-      <div class="range"><input id="pRechen" type="range" min="0" max="5" step="0.05" value="1.0"><output id="pRechenOut"></output></div></div>
+      <div class="range"><input id="pRechen" type="range" min="0" max="5" step="0.01" value="1.06"><output id="pRechenOut"></output></div></div>
     <div class="ctl"><label for="pHw">Hardware pro Server und Jahr</label>
       <div class="range"><input id="pHw" type="range" min="0" max="15000" step="250" value="0"><output id="pHwOut"></output></div></div>
   </div>
@@ -408,7 +408,8 @@ function annahmenKurz() {
       `Strom ${fmt(a("strompreis_chf_kwh") * 100, 2)} Rp./kWh ${s("ElCom 2026, IWB Basel, H4")}`,
       `Wärme ${fmt(a("waermewert_chf_kwh") * 100, 1)} Rp./kWh = Strompreis ÷ 2,5 ${s("ersetzt Wärmepumpe")}`,
       `Rechenzeit ${fmt(a("rechenpreis_usd_server_h"), 2)} $ pro Server-h ${s("günstigster Spot-Preis H100 × 1,6")}`,
-      `<b>Wechselkurs ${fmt(a("usd_chf"), 2)} CHF/$ noch ohne Quelle</b>`,
+      `Wechselkurs ${fmt(a("usd_chf"), 2)} CHF pro $ ${s("Stand 20.11.2026")}`,
+      `= ${fmt(a("rechenpreis_usd_server_h") * a("usd_chf"), 2)} CHF pro Server-h (Startwert des Reglers)`,
       `<b>Hardwarekosten nicht im Modell</b>, nur als Grenze (Regler oben)`]],
     ["Aufträge", [
       `A: Texte aufbereiten (Embeddings), ${fmt(a("job_a_kwh"), 2)} kWh ≈ 1 h, pausierbar, Frist ${a("job_a_frist_h")} h ${s("selbst gemessen, 28,9 W")}`,
@@ -455,6 +456,7 @@ document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click",
   S[seg.dataset.key] = b.dataset.v; alles(); }));
 document.querySelectorAll("[data-table]").forEach((b) => b.addEventListener("click", () => {
   const t = $(b.dataset.table); t.hidden = !t.hidden; b.textContent = t.hidden ? "Tabelle zeigen" : "Tabelle ausblenden"; }));
+$("pRechen").value = (D.annahmen.rechenpreis_usd_server_h.wert * D.annahmen.usd_chf.wert).toFixed(2);
 annahmenKurz(); annahmen(); alles(); live(); if (!window.LIVE_AUFZEICHNUNG) setInterval(live, 1000);
 </script>
 </body>

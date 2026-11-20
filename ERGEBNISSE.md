@@ -27,9 +27,9 @@ Szenario **Spot**: Typ A wird jederzeit vom Spot-Markt abgenommen (Annahme: unbe
 | Verpasste Fristen | **0,0 %** von 14'390 Jobs mit Frist |
 | Stromkosten | 12'066 CHF (36'290 kWh × 0,3325) |
 | Wert der genutzten Wärme | 3'861 CHF (29'027 kWh × 0,133) |
-| Rechenerlös bei 1,01 CHF/Server-h | 36'580 CHF |
+| Rechenerlös bei 1,06 CHF/Server-h | 38'409 CHF |
 | **Break-even-Rechenpreis** | **0,226 CHF pro Server-h** = (12'066 − 3'861) ÷ 36'290 |
-| Höchstens tragbare Hardwarekosten | 3'547 CHF pro Server und Jahr (beim Rechenpreis 1,01 CHF/Server-h) |
+| Höchstens tragbare Hardwarekosten | 3'775 CHF pro Server und Jahr (beim Rechenpreis 1,06 CHF/Server-h) |
 
 ## Warum 8 Server
 | Server | 4 | 6 | **8** | 10 | 12 |
@@ -37,7 +37,7 @@ Szenario **Spot**: Typ A wird jederzeit vom Spot-Markt abgenommen (Annahme: unbe
 | Deckung | 58,1 % | 79,6 % | **93,0 %** | 99,3 % | 100 % |
 | Auslastung | 64,7 % | 59,1 % | **51,8 %** | 44,2 % | 37,2 % |
 | Abgeführt | 0 | 0 | **5 kWh** | 12 kWh | 28 kWh |
-| Max. Hardware/Server/Jahr | 4'430 | 4'049 | **3'547** | 3'031 | 2'548 CHF |
+| Max. Hardware/Server/Jahr | 4'715 | 4'310 | **3'775** | 3'226 | 2'712 CHF |
 
 - Bis 8 Server bringt jeder weitere Server 6–13 Prozentpunkte Deckung, der 9. nur noch 3,9.
 - Die Kosten tragen die Winterstunden: Ab Server 9 laufen die zusätzlichen Server nur in wenigen kalten Stunden, die Auslastung fällt unter 50 %.
@@ -54,8 +54,8 @@ Von Juni bis August laufen die Server nur noch für das Warmwasser (0,6 Server).
 ## Wann es sich nicht lohnt
 1. **Rechenpreis unter 0,226 CHF pro Server-h:** Dann deckt der Erlös nicht einmal den Strom abzüglich Wärmewert. Das gilt unabhängig von der Serverzahl, solange keine Wärme abgeführt wird.
 2. **Hardware:** Mit Hardware gilt: nötiger Rechenpreis = Hardware pro Server und Jahr ÷ 4'538 Server-h + 0,226 CHF.
-   Beispiel (nur zur Illustration, Hardwarepreis nicht recherchiert): Kostet ein 1-kW-GPU-Server über 5 Jahre 9'000 CHF pro Jahr, braucht es **2,21 CHF pro Server-h** (≈ 1,73 $ pro H100-GPU-h). Das liegt im Bereich heutiger Spot-Preise (0,79–2,50 $), aber nicht am unteren Rand.
-   **Bei 1,01 CHF/Server-h (unterster Spot-Preis) lohnt es sich nur, wenn ein Server weniger als 3'547 CHF pro Jahr kostet.**
+   Beispiel (nur zur Illustration, Hardwarepreis nicht recherchiert): Kostet ein 1-kW-GPU-Server über 5 Jahre 9'000 CHF pro Jahr, braucht es **2,21 CHF pro Server-h** (≈ 1,64 $ pro H100-GPU-h). Das liegt im Bereich heutiger Spot-Preise (0,79–2,50 $), aber nicht am unteren Rand.
+   **Bei 1,06 CHF/Server-h (unterster Spot-Preis) lohnt es sich nur, wenn ein Server weniger als 3'775 CHF pro Jahr kostet.**
 3. **Ohne flexible Nachfrage (Szenario Alibaba):** Kommen alle Jobs mit Frist nach Alibaba-Trace, sinkt die Deckung bei 8 Servern auf 51,7 %. Im Sommer müssen 7'506 kWh Wärme abgeführt werden, weil die Jobs vor ihrer Frist laufen müssen. Der Break-even steigt auf 0,260 CHF.
    Mit der Regel «abgeben» gehen 9'608 Jobs (8'990 Server-h) an andere Standorte. Abgeführt werden nur noch 316 kWh. **Genau diese 9'000 Server-h im Sommer bräuchten einen Abnehmer mit Sommerwärmebedarf** (Hotel mit Spa, Maistrockner).
 
@@ -71,7 +71,7 @@ Von Juni bis August laufen die Server nur noch für das Warmwasser (0,6 Server).
 ## Annahmen und Grenzen
 Alle Annahmen mit Quelle stehen in `src/scheduler/annahmen.py` und in jeder Ergebnisdatei (`daten/ergebnisse/serverzahl.json`, Feld `annahmen`). Die wichtigsten:
 - **Unbegrenzte Spot-Nachfrage für Typ A** (Szenario Spot). Das ist die stärkste Annahme. Das Szenario Alibaba zeigt, was ohne sie passiert.
-- Rechenpreis 1,26 $/Server-h (unterster Spot-Preis × 1,6 GPU/kW), **Wechselkurs 0,80 CHF/$ ohne Quelle**.
+- Rechenpreis 1,26 $/Server-h (unterster Spot-Preis × 1,6 GPU/kW), Wechselkurs 0,84 CHF/$ (Stand 20.11.2026).
 - Hardwarekosten nicht im Modell, nur als Schwelle ausgewiesen.
 - Wärmeabgabe = Strom × 0,8, unabhängig von der Auslastung der GPU im Server. Läuft ein Server, läuft er voll (Alibaba zeigt im Median 4 % GPU-Nutzung: Jobs müssen dicht gepackt werden).
 - Stündliche Auflösung, perfekte Kenntnis des Bedarfs der laufenden Stunde, keine Prognose über die Stunde hinaus.

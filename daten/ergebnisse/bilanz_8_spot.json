@@ -19,11 +19,11 @@
  "abgegeben_server_h": 0.0,
  "stromkosten_chf": 12066,
  "waermewert_chf": 3861,
- "rechenerloes_chf": 36580,
- "ergebnis_ohne_hardware_chf": 28375,
+ "rechenerloes_chf": 38409,
+ "ergebnis_ohne_hardware_chf": 30204,
  "break_even_chf_pro_server_h": 0.2261,
- "rechenpreis_chf_pro_server_h": 1.008,
- "max_hardware_chf_pro_server_jahr": 3547,
+ "rechenpreis_chf_pro_server_h": 1.058,
+ "max_hardware_chf_pro_server_jahr": 3775,
  "ankuenfte": {
   "jobs_a_pro_tag": null,
   "jobs_b_pro_tag": 39.97

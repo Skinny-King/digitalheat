@@ -33,7 +33,7 @@ Ein Server braucht Strom und macht daraus fast vollständig Wärme. Normalerweis
 
 ## Lohnt es sich?
 - **Der Strom ist nicht das Problem.** Schon ab 0,23 CHF pro Server-Stunde rechnet es sich. Rechenzeit wird heute für etwa 1–4 CHF pro Stunde verkauft.
-- **Entscheidend sind die Kosten der Hardware.** Bei einem Rechenpreis von 1 CHF pro Stunde darf ein Server höchstens rund **3'500 CHF pro Jahr** kosten.
+- **Entscheidend sind die Kosten der Hardware.** Bei einem Rechenpreis von 1,06 CHF pro Stunde darf ein Server höchstens rund **3'800 CHF pro Jahr** kosten.
 - **Es lohnt sich NICHT, wenn:**
   - der Rechenpreis unter 0,23 CHF pro Stunde fällt, oder
   - die Hardware teurer ist, als die Erlöse hergeben, oder
@@ -58,8 +58,8 @@ Ein Server braucht Strom und macht daraus fast vollständig Wärme. Normalerweis
 ## Wichtigste Annahmen
 - Es gibt immer genug Rechenaufträge zu kaufen (Spot-Markt). Ohne diese Annahme sinkt die Deckung auf 52 %.
 - Strompreis 33,25 Rp./kWh (IWB Basel 2026). Die Wärme ist 13,3 Rp./kWh wert, weil sie eine Wärmepumpe ersetzt.
-- Rechenpreis rund 1 CHF pro Server-Stunde (günstigster Marktpreis). Der Wechselkurs von 0,80 CHF pro Dollar ist noch nicht belegt.
+- Rechenpreis rund 1,06 CHF pro Server-Stunde (günstigster Marktpreis, 1 $ = 0,84 CHF).
 - Hardwarekosten sind nicht eingerechnet, sondern als Grenze angegeben.
 
 ## In einem Satz
-**8 Server pro Haus decken 93 % der Wärme und verschwenden fast nichts. Es lohnt sich, wenn ein Server weniger als rund 3'500 CHF pro Jahr kostet und es im Sommer einen zweiten Wärmeabnehmer gibt.**
+**8 Server pro Haus decken 93 % der Wärme und verschwenden fast nichts. Es lohnt sich, wenn ein Server weniger als rund 3'800 CHF pro Jahr kostet und es im Sommer einen zweiten Wärmeabnehmer gibt.**

@@ -16,7 +16,7 @@ ANNAHMEN = {
     # --- Preise ---
     "strompreis_chf_kwh": (0.3325, "ElCom 2026, IWB Basel, H4, Total (daten/roh/elcom/iwb_h4_2026.json)"),
     "waermewert_chf_kwh": (0.3325 / 2.5, "Case: Strompreis ÷ 2,5 (ersetzt Wärmepumpe mit JAZ 2,5)"),
-    "usd_chf": (0.80, "ANNAHME, Stichtag und Quelle noch festlegen"),
+    "usd_chf": (0.84, "Angabe Joël, 20.11.2026: 1 USD = 0,84 CHF"),
     "rechenpreis_usd_server_h": (1.26, "Spot H100 0,79 $/GPU-h × 1,6 GPU pro kW (daten/PREISE.md), untere Spanne"),
     # --- Jobs ---
     "job_a_kwh": (_typ["A"]["energie_kwh"], _typ["A"]["quelle_energie"]),
