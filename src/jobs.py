@@ -1,0 +1,1 @@
+"liefert Jobparameter und Jobstatus"

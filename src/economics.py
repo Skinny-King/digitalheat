@@ -1,0 +1,1 @@
+"berechnet Kosten und Erträge"
