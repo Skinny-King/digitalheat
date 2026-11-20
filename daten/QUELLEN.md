@@ -37,5 +37,5 @@
 - Zitieren: Weng et al., «MLaaS in the Wild», NSDI ’22
 
 ## Noch offen
-- Cloud-Preise siehe `PREISE.md` (Hardwarekosten und Wechselkurs noch offen)
+- Cloud-Preise siehe `PREISE.md` (Hardwarekosten noch offen, Wechselkurs 0,84 CHF/USD gesetzt)
 - Gaspreise (Quelle in NOTIZEN.md abgeschnitten)
