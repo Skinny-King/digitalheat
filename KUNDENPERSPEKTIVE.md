@@ -1,4 +1,4 @@
-# Kundenperspektive: Win-Win-Win (Stand 21.11.2026)
+# Kundenperspektive (Haushalt) – Stand 21.11.2026
 
 Rechnung: `python3 src/kunde/wirtschaftlichkeit.py` → `daten/ergebnisse/win_win_win.json`. Die Physik (Deckung, Strom, Auslastung) kommt aus derselben Jahressimulation wie die Bilanz. «ANNAHME» = selbst gesetzt, noch zu prüfen.
 
@@ -7,7 +7,7 @@ Rechnung: `python3 src/kunde/wirtschaftlichkeit.py` → `daten/ergebnisse/win_wi
 2. **Heutige Kosten kennen:** Was zahlt der Haushalt heute für Wärme (Öl, Gas, Wärmepumpe) und was würde ein Heizungsersatz kosten?
 3. **Angebot rechnen:** Wer zahlt was (Server, Strom, Installation, Wärme)? Mehrere Modelle vergleichen.
 4. **Einwände sammeln:** Lärm, Platz, Sicherheit, Haftung, Internet, was passiert beim Ausfall, beim Umzug, nach Vertragsende?
-5. **Gegen die anderen zwei Säulen prüfen:** Das Angebot muss auch für DigitalHeat und den Pharmakunden aufgehen, sonst ist es kein Win-Win-Win.
+5. **Schnittstellen klären:** Was das Kundenangebot von der Firma und vom Pharmakunden braucht (Abschnitt 4), mit den Kollegen abstimmen.
 6. **Dashboard ableiten:** Was will der Kunde jeden Tag sehen (Smart-Home-App), was nur ab und zu (eigenes Dashboard)?
 
 ## 2. Wer zahlt den Server?
@@ -44,63 +44,53 @@ Grundlagen: Strom 33,25 Rp./kWh (ElCom 2026, IWB), Wärmepumpe JAZ 2,5 (Case) �
 
 **Wichtigster Vorbehalt:** Ob die Serverheizung in Basel als erneuerbarer Heizungsersatz gilt (Energiegesetz BS), ist offen. Nur dann entfällt die neue Wärmepumpe. Klärung beim Amt für Umwelt und Energie, Abteilung Energie.
 
-## 4. Lohnt es sich für DigitalHeat?
-Hardware: L40S-Klasse, 8 GPUs ≈ 70'000 $ (Thinkmate, Lambda), ≈ 3,8 kW, + 15 % Flüssigkeitskühlung → **17'800 CHF pro kW**, 2,1 GPUs pro kW. Abschreibung 5 Jahre, Unterhalt 5 %/Jahr.
+## 4. Schnittstellen zu den anderen Säulen (von Kollegen zu bestätigen)
+Diese Werte rechnet nicht die Kundenperspektive. Sie sind nur so weit drin, wie das Kundenangebot von ihnen abhängt.
 
-| Referenzhaus, 8 kW, Modell A | Rechenpreis tief (0,86 $/GPU-h) | **Pharma-Preis (1,40 $/GPU-h)** |
-|---|---|---|
-| Rechenerlös | 55'100 CHF | **89'500 CHF** |
-| Strom | − 12'100 | − 12'100 |
-| Hardware (Abschreibung + Unterhalt) | − 35'600 | − 35'600 |
-| Installation, Netz, Betrieb | − 2'600 | − 2'600 |
-| **Gewinn pro Haus und Jahr** | **5'000 CHF** | **39'300 CHF** |
-| Rendite auf 162'000 CHF Investition | 3 % | **24 %** |
-| Amortisation | 4,7 Jahre | **2,3 Jahre** |
-| Break-even-Rechenpreis | 0,78 $/GPU-h | 0,78 $/GPU-h |
+| Was ich brauche | Von wem | Warum es für den Kunden zählt | Arbeitsannahme bis zur Bestätigung |
+|---|---|---|---|
+| Wer zahlt Hardware, Installation und Server-Strom? | Säule Firma | Davon hängt ab, ob Gratiswärme möglich ist | DigitalHeat zahlt alles |
+| Kann sich die Firma Gratiswärme leisten, oder braucht es ein Wärmeabo? | Säule Firma | Bestimmt die Ersparnis (3'861 vs. 1'158 CHF/Jahr gegenüber WP) | Gratiswärme im Pilot |
+| Wie viele flexible Aufträge gibt es das ganze Jahr? | Säule Pharma | Davon hängt ab, ob im Winter genug Wärme kommt (93 % vs. 52 % Deckung) | genug flexible Aufträge |
+| Welche Einheitengrösse (kW) pro Haus? | Säule Firma | Lärm, Platz, Anschluss | 8 kW Referenzhaus, 5 kW Durchschnitt |
+| Sicherheitsauflagen der Pharmakunden im Haus (Zugang, Plombe, Kamera?) | Säule Pharma | Was der Haushalt dulden muss | kein Zugang, verplombtes Gehäuse |
+| Vertragslaufzeit, Kündigung, was bei Konkurs | Säule Firma | Vertrauen des Kunden | Backup-Heizung bleibt immer |
 
-**Wann es nicht aufgeht:**
-- Fällt der Preis unter **0,78 $ pro GPU-Stunde**, macht DigitalHeat Verlust. Der tiefste Marktpreis liegt heute bei 0,38–0,86 $.
-- Kommen nur Aufträge mit Frist (Alibaba-Szenario), sinkt die Deckung auf 52 %, und bei tiefem Preis entsteht Verlust (−3'000 CHF/Jahr). DigitalHeat braucht deshalb **feste, flexible Aufträge**, und genau die liefert der Pharmakunde.
-- Die Amortisation muss klar unter 5 Jahren liegen, sonst ist die Hardware abgeschrieben, bevor sie sich bezahlt hat.
+Eine erste Rechnung der Firmenseite (zur Kontrolle, nicht mein Teil) liegt in `daten/ergebnisse/win_win_win.json`.
 
-## 5. Lohnt es sich für den Pharmakunden?
-- Preis **1,40 $ pro GPU-Stunde**: 25 % unter AWS (1,86 $, g6e) und 11 % unter dem Marktmedian (1,57 $).
-- **Rechenort Schweiz**, keine Daten in einer US-Cloud.
-- **Gute Aufträge** für Serverheizungen, weil sie lang laufen, warten können und sich pausieren lassen: Molekül-Docking, Virtual Screening, Proteinstrukturen, Embeddings von Fachliteratur.
-- **Sicherheit:** Server in Privathäusern brauchen verschlüsselte Datenträger, verplombte Gehäuse, keinen Zugang für den Haushalt und eine Fernsperre. **Keine Patientendaten** in Privathäusern, nur Daten ohne Personenbezug (Moleküle, Strukturen). Für vertrauliche Modelle wären GPUs mit «Confidential Computing» nötig, etwa H100. Die sind teurer und rechnen sich nur bei höheren Preisen.
-- Pro Referenzhaus rund **76'000 GPU-Stunden pro Jahr**.
-
-## 6. Förderungen
+## 5. Förderungen
 | Programm | Für wen | Relevanz | Stand |
 |---|---|---|---|
 | **Förderbeiträge Energie Basel-Stadt** (Gesuch über dasgebaeudeprogramm.ch/bs) | Haushalt | Wärmepumpe 2026: 8'000 CHF + 250 CHF/kWth (Luft/Wasser), max. 40 % der Investition, halbiert im Fernwärmegebiet. **Serverheizung ist keine genannte Kategorie** | klären mit AUE BS |
 | **Impulsprogramm Bund** (Klima- und Innovationsgesetz, 2025–2034, 200 Mio. CHF/Jahr, Vollzug durch Kantone) | Haushalt | fördert Ersatz von Elektroheizungen und den Einbau einer Wärmeverteilung (bis 100 %) | prüfen, ob anwendbar |
 | **Gebäudeprogramm** (CO2-Abgabe) | Haushalt | Dämmung, erneuerbare Heizungen | über Kanton |
-| BFE: Pilot- und Demonstrationsprojekte, EnergieSchweiz | DigitalHeat | Pilotanlagen und Abwärmenutzung (BFE-Bericht «Abwärmenutzung von Rechenzentren», 2023) | aus eigener Kenntnis, Bedingungen prüfen |
-| Innosuisse (Innovationsprojekte, Start-up-Coaching) | DigitalHeat | Entwicklung mit einer Hochschule, z. B. FHNW | prüfen |
-| CO2-Kompensation (z. B. Stiftung KliK) | DigitalHeat | Ersetzt die Serverheizung eine Ölheizung, spart sie rund 8 t CO2 pro Jahr und Haus, das wäre bescheinigbar | prüfen |
-
 Förderungen sind im Rechenbeispiel nicht eingerechnet (ausser der vermiedenen Wärmepumpenförderung). Sie sind ein Zusatzvorteil.
 
-## 7. Mögliche Partner
-| Partner | Rolle | Nutzen |
-|---|---|---|
-| **IWB** (Basler Energieversorger) | Strom, Glasfaser, Energie-Contracting, Kundenzugang | Vertrauen, bestehende Heizungskunden, evtl. Spezialtarif |
-| **Pharma Basel** (Roche, Novartis, Lonza, Biotech-Start-ups) | Rechenkunde | lokal, Schweizer Rechenort, Nachhaltigkeitsziele |
-| **Heizungsinstallateure** | Einbau, Service, Backup-Heizung | Netz von Fachleuten vor Ort |
-| **Smart-Home** (Loxone, Home Assistant, Homey, Matter) | App-Integration | Kunde steuert alles in seiner gewohnten App |
-| **Versicherung** (z. B. Baloise, Basel) | Hardware im Privathaus, Haftung | nimmt dem Haushalt die Sorge vor Schäden |
-| **Banken** (grüne Hypothek, z. B. BKB) | Finanzierung | günstige Hypothek für Häuser mit Serverheizung |
-| **Hardware** (Supermicro, Dell über Schweizer Integratoren) | Server, Flüssigkeitskühlung | Mengenrabatt, Garantie |
-| Hochschule (FHNW, Uni Basel) | Messung, Innosuisse-Projekt | Glaubwürdigkeit, Fördergeld |
+Hinweis für die Säule Firma (nicht Teil der Kundenperspektive): BFE-Pilot- und Demonstrationsprojekte, Innosuisse und CO2-Bescheinigungen (z. B. Stiftung KliK, rund 8 t CO2 pro ersetzter Ölheizung und Jahr) könnten für DigitalHeat selbst in Frage kommen.
 
-## 8. Win-Win-Win auf einen Blick (Referenzhaus, Modell A, Pharma-Preis)
-| Haushalt | DigitalHeat | Pharma |
-|---|---|---|
-| spart **3'900–5'700 CHF/Jahr** Heizkosten, + ≈ 1'900 CHF/Jahr, wenn kein Heizungsersatz nötig ist | **39'000 CHF Gewinn pro Haus und Jahr**, 24 % Rendite, Amortisation 2,3 Jahre | **25 % günstiger als AWS**, Rechenort Schweiz, flexible Batch-Aufträge |
-| kein Kauf, kein Server-Strom, kein Risiko | Risiko: Preis unter 0,78 $/GPU-h oder zu wenig flexible Aufträge | Risiko: Sicherheit im Privathaus, nur Daten ohne Personenbezug |
+## 6. Partner, die der Kunde spürt
+| Partner | Was der Kunde davon hat |
+|---|---|
+| **IWB** | bekannter Absender, Strom und Glasfaser aus einer Hand, Vertrauen |
+| **Lokaler Heizungsinstallateur** | Einbau, Service und Backup-Heizung von jemandem aus der Region |
+| **Smart-Home-Anbieter** (Loxone, Home Assistant, Homey, Matter) | Steuerung in der App, die er schon hat |
+| **Versicherung** (z. B. Baloise) | Schäden an der Anlage sind nicht sein Risiko |
+| **Bank** (grüne Hypothek, z. B. BKB) | günstigere Hypothek für ein Haus mit erneuerbarer Wärme |
 
-## 9. Was der Kunde sehen will (Grundlage fürs Dashboard)
+## 7. Das Angebot an den Kunden in einem Satz
+**DigitalHeat stellt eine Serverheizung kostenlos in den Keller, zahlt deren Strom und Unterhalt, und der Haushalt bekommt über 90 % seiner Wärme gratis. Das spart 2'300–5'700 CHF pro Jahr und erspart oft den teuren Heizungsersatz.**
+
+Einwände und Antworten:
+| Einwand | Antwort |
+|---|---|
+| «Was, wenn der Server ausfällt?» | Die Backup-Heizung bleibt und springt automatisch ein, der Speicher überbrückt Stunden |
+| «Ist das laut?» | ANNAHME: Flüssigkeitskühlung ohne grosse Lüfter, im Keller hinter einer Tür; vor dem Pilot messen |
+| «Wer haftet bei Schäden?» | DigitalHeat, über eine Versicherung |
+| «Kommt jemand an meine Daten oder ich an fremde?» | Getrennte Netze, verplombtes Gehäuse, der Haushalt hat keinen Zugang |
+| «Was, wenn ich umziehe?» | Vertrag geht auf den neuen Eigentümer über oder die Anlage wird zurückgebaut |
+| «Brauche ich trotzdem eine neue Wärmepumpe?» | Offen, hängt vom Kanton ab (siehe Abschnitt 3) |
+
+## 8. Was der Kunde sehen will (Grundlage fürs Dashboard)
 **Smart-Home-App (nur das Wichtigste):**
 - Wärme heute und diesen Monat vom Server (kWh, Anteil am Bedarf)
 - **Ersparnis in CHF** diesen Monat und seit Start
@@ -115,9 +105,8 @@ Förderungen sind im Rechenbeispiel nicht eingerechnet (ausser der vermiedenen W
 - Wartung, Vertrag, Förderung, Kontakte
 - Prognose der nächsten Tage (Wetter, erwartete Wärme)
 
-## 10. Offene Punkte
+## 9. Offene Punkte
 - Gilt die Serverheizung im Kanton Basel-Stadt als erneuerbarer Heizungsersatz?
-- Echte Hardware- und Installationspreise (Offerten), Kosten der Flüssigkeitskühlung
 - Lärm und Platzbedarf von 8 kW Servern im Keller
 - Vertragslaufzeit, Umzug, was passiert bei Konkurs von DigitalHeat (Backup-Heizung muss bleiben)
-- Pharma: welche Aufträge, welche Sicherheitsstufe, welcher Mindestumfang
+- Antworten der anderen Säulen auf die Schnittstellen in Abschnitt 4
