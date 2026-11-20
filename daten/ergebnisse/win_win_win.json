@@ -1,0 +1,941 @@
+{
+ "annahmen": {
+  "strom_chf_kwh": {
+   "wert": 0.3325,
+   "quelle": "ElCom 2026, IWB Basel, H4"
+  },
+  "jaz_waermepumpe": {
+   "wert": 2.5,
+   "quelle": "Case"
+  },
+  "heizoel_chf_l": {
+   "wert": 1.665,
+   "quelle": "weekend.at, Schweiz Anfang Nov. 2026, 3'000 l (1,66–1,67 CHF/l)"
+  },
+  "heizoel_kwh_l": {
+   "wert": 10.0,
+   "quelle": "Heizwert Heizöl EL ≈ 10 kWh/l"
+  },
+  "wirkungsgrad_oelkessel": {
+   "wert": 0.85,
+   "quelle": "ANNAHME, älterer Ölkessel"
+  },
+  "ww_kwh_tag": {
+   "wert": 12.0,
+   "quelle": "Case"
+  },
+  "durchschnitt_waerme_kwh": {
+   "wert": 17000.0,
+   "quelle": "ANNAHME aus Raiffeisen-Beispiel: EFH mit 2'000 l Heizöl/Jahr ≈ 20'000 kWh Brennstoff × 0,85"
+  },
+  "wp_neu_chf": {
+   "wert": 45000.0,
+   "quelle": "handwerker-kosten.ch: Wärmepumpe Basel 31'500–63'000 CHF (2026), Mitte"
+  },
+  "wp_foerderung_chf": {
+   "wert": 10500.0,
+   "quelle": "ion-e.ch: BS 2026 Luft/Wasser 8'000 + 250/kWth, Beispiel 8 kW = 10'500 (nicht amtlich geprüft)"
+  },
+  "wp_lebensdauer_j": {
+   "wert": 18.0,
+   "quelle": "ANNAHME, übliche Nutzungsdauer Wärmepumpe 15–20 Jahre"
+  },
+  "server_usd_8xl40s": {
+   "wert": 70000.0,
+   "quelle": "Thinkmate 56'100–82'000 $, Lambda 79'999–82'999 $ (8× L40S, 4U, luftgekühlt), Mitte"
+  },
+  "kw_8xl40s": {
+   "wert": 3.8,
+   "quelle": "ANNAHME: 8 × 350 W GPU + ≈ 1 kW Host"
+  },
+  "aufpreis_fluessigkuehlung": {
+   "wert": 0.15,
+   "quelle": "ANNAHME: +15 % für direkte Flüssigkeitskühlung (DigitalHeat-Bauweise)"
+  },
+  "hw_abschreibung_j": {
+   "wert": 5.0,
+   "quelle": "ANNAHME, übliche Nutzungsdauer GPU-Server"
+  },
+  "hw_unterhalt_anteil": {
+   "wert": 0.05,
+   "quelle": "ANNAHME: 5 % der Hardware pro Jahr (Ersatzteile, Service)"
+  },
+  "installation_chf": {
+   "wert": 20000.0,
+   "quelle": "ANNAHME: Wärmetauscher, Hydraulik, Elektro, Glasfaser, Gehäuse; zum Vergleich WP-Einbau 31'500–63'000"
+  },
+  "installation_abschreibung_j": {
+   "wert": 15.0,
+   "quelle": "ANNAHME"
+  },
+  "netz_chf_jahr": {
+   "wert": 720.0,
+   "quelle": "ANNAHME: Geschäfts-Glasfaser ≈ 60 CHF/Monat"
+  },
+  "betrieb_chf_jahr": {
+   "wert": 500.0,
+   "quelle": "ANNAHME: Fernwartung, Versicherung, Abrechnung pro Haus"
+  },
+  "l40s_usd_h_tief": {
+   "wert": 0.86,
+   "quelle": "RunPod Juni 2026 ≈ 0,86 $/GPU-h (gpuperhour / DeployBase)"
+  },
+  "l40s_usd_h_median": {
+   "wert": 1.57,
+   "quelle": "GetDeploying: Median on-demand, 35 Anbieter, 12.11.2026"
+  },
+  "l40s_usd_h_aws": {
+   "wert": 1.86,
+   "quelle": "AWS g6e.xlarge on-demand (Beam, Devzero)"
+  },
+  "pharma_rabatt_vs_aws": {
+   "wert": 0.25,
+   "quelle": "ANNAHME: DigitalHeat verkauft 25 % unter AWS (Schweizer Standort, gleiche GPU)"
+  },
+  "waermeabo_rabatt": {
+   "wert": 0.3,
+   "quelle": "ANNAHME: Wärmeabo 30 % unter den Energiekosten einer Wärmepumpe"
+  }
+ },
+ "abgeleitet": {
+  "chf_usd": 0.84,
+  "gpus_pro_kw": 2.11,
+  "hardware_chf_pro_kw": 17795,
+  "pharma_preis_usd_gpu_h": 1.395,
+  "skalierung_heizung_durchschnitt": 0.47
+ },
+ "faelle": [
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 29027.0,
+    "backup": 2203.0,
+    "strom": 36290.0,
+    "abgefuehrt": 5.0,
+    "server_h": 36290.0,
+    "auslastung": 0.518
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 293,
+    "ersparnis_vs_wp_chf": 3861,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 432,
+    "ersparnis_vs_oel_chf": 5686,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 7603
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 55191,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 12066,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 4982,
+    "rendite_auf_capex": 0.031,
+    "amortisation_jahre": 4.7,
+    "break_even_usd_gpu_h": 0.782
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 76400
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 29027.0,
+    "backup": 2203.0,
+    "strom": 36290.0,
+    "abgefuehrt": 5.0,
+    "server_h": 36290.0,
+    "auslastung": 0.518
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 293,
+    "ersparnis_vs_wp_chf": 3861,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 432,
+    "ersparnis_vs_oel_chf": 5686,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 7603
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 89525,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 12066,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 39316,
+    "rendite_auf_capex": 0.242,
+    "amortisation_jahre": 2.3,
+    "break_even_usd_gpu_h": 0.782
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 76400
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 29027.0,
+    "backup": 2203.0,
+    "strom": 36290.0,
+    "abgefuehrt": 5.0,
+    "server_h": 36290.0,
+    "auslastung": 0.518
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 2995,
+    "ersparnis_vs_wp_chf": 1158,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 3134,
+    "ersparnis_vs_oel_chf": 2984,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 4900
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 55191,
+    "erloes_waerme_chf": 2702,
+    "kosten_chf": {
+     "strom": 12066,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 7685,
+    "rendite_auf_capex": 0.047,
+    "amortisation_jahre": 4.3,
+    "break_even_usd_gpu_h": 0.74
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 76400
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 29027.0,
+    "backup": 2203.0,
+    "strom": 36290.0,
+    "abgefuehrt": 5.0,
+    "server_h": 36290.0,
+    "auslastung": 0.518
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 2995,
+    "ersparnis_vs_wp_chf": 1158,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 3134,
+    "ersparnis_vs_oel_chf": 2984,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 4900
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 89525,
+    "erloes_waerme_chf": 2702,
+    "kosten_chf": {
+     "strom": 12066,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 42019,
+    "rendite_auf_capex": 0.259,
+    "amortisation_jahre": 2.3,
+    "break_even_usd_gpu_h": 0.74
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 76400
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 16154.0,
+    "backup": 15077.0,
+    "strom": 29575.0,
+    "abgefuehrt": 7506.0,
+    "server_h": 29575.0,
+    "auslastung": 0.422
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 2005,
+    "ersparnis_vs_wp_chf": 2148,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 2953,
+    "ersparnis_vs_oel_chf": 3164,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 5081
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 44979,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 9834,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": -2998,
+    "rendite_auf_capex": -0.018,
+    "amortisation_jahre": 6.1,
+    "break_even_usd_gpu_h": 0.917
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 62263
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 16154.0,
+    "backup": 15077.0,
+    "strom": 29575.0,
+    "abgefuehrt": 7506.0,
+    "server_h": 29575.0,
+    "auslastung": 0.422
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 2005,
+    "ersparnis_vs_wp_chf": 2148,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 2953,
+    "ersparnis_vs_oel_chf": 3164,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 5081
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 72959,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 9834,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 24983,
+    "rendite_auf_capex": 0.154,
+    "amortisation_jahre": 3.0,
+    "break_even_usd_gpu_h": 0.917
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 62263
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 16154.0,
+    "backup": 15077.0,
+    "strom": 29575.0,
+    "abgefuehrt": 7506.0,
+    "server_h": 29575.0,
+    "auslastung": 0.422
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 3509,
+    "ersparnis_vs_wp_chf": 645,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 4457,
+    "ersparnis_vs_oel_chf": 1660,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3577
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 44979,
+    "erloes_waerme_chf": 1504,
+    "kosten_chf": {
+     "strom": 9834,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": -1494,
+    "rendite_auf_capex": -0.009,
+    "amortisation_jahre": 5.7,
+    "break_even_usd_gpu_h": 0.889
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 62263
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Referenzhaus 31'231 kWh",
+   "kw": 8,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 8,
+    "bedarf": 31231.0,
+    "genutzt": 16154.0,
+    "backup": 15077.0,
+    "strom": 29575.0,
+    "abgefuehrt": 7506.0,
+    "server_h": 29575.0,
+    "auslastung": 0.422
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 4154,
+    "nachher_wp_chf": 3509,
+    "ersparnis_vs_wp_chf": 645,
+    "vorher_oel_chf": 6118,
+    "nachher_oel_chf": 4457,
+    "ersparnis_vs_oel_chf": 1660,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3577
+   },
+   "digitalheat": {
+    "capex_chf": 162358,
+    "hardware_chf": 142358,
+    "erloes_rechnen_chf": 72959,
+    "erloes_waerme_chf": 1504,
+    "kosten_chf": {
+     "strom": 9834,
+     "hardware_abschreibung": 28472,
+     "hardware_unterhalt": 7118,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 26487,
+    "rendite_auf_capex": 0.163,
+    "amortisation_jahre": 2.9,
+    "break_even_usd_gpu_h": 0.889
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 62263
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 16932.0,
+    "backup": 68.0,
+    "strom": 21165.0,
+    "abgefuehrt": 0.0,
+    "server_h": 21165.0,
+    "auslastung": 0.483
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 9,
+    "ersparnis_vs_wp_chf": 2252,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 13,
+    "ersparnis_vs_oel_chf": 3317,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 5233
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 32189,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 7037,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 354,
+    "rendite_auf_capex": 0.003,
+    "amortisation_jahre": 5.6,
+    "break_even_usd_gpu_h": 0.851
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 44558
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 16932.0,
+    "backup": 68.0,
+    "strom": 21165.0,
+    "abgefuehrt": 0.0,
+    "server_h": 21165.0,
+    "auslastung": 0.483
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 9,
+    "ersparnis_vs_wp_chf": 2252,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 13,
+    "ersparnis_vs_oel_chf": 3317,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 5233
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 52213,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 7037,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 20379,
+    "rendite_auf_capex": 0.187,
+    "amortisation_jahre": 2.8,
+    "break_even_usd_gpu_h": 0.851
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 44558
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 16932.0,
+    "backup": 68.0,
+    "strom": 21165.0,
+    "abgefuehrt": 0.0,
+    "server_h": 21165.0,
+    "auslastung": 0.483
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 1585,
+    "ersparnis_vs_wp_chf": 676,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 1590,
+    "ersparnis_vs_oel_chf": 1740,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3657
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 32189,
+    "erloes_waerme_chf": 1576,
+    "kosten_chf": {
+     "strom": 7037,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 1931,
+    "rendite_auf_capex": 0.018,
+    "amortisation_jahre": 5.2,
+    "break_even_usd_gpu_h": 0.808
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 44558
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 16932.0,
+    "backup": 68.0,
+    "strom": 21165.0,
+    "abgefuehrt": 0.0,
+    "server_h": 21165.0,
+    "auslastung": 0.483
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 1585,
+    "ersparnis_vs_wp_chf": 676,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 1590,
+    "ersparnis_vs_oel_chf": 1740,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3657
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 52213,
+    "erloes_waerme_chf": 1576,
+    "kosten_chf": {
+     "strom": 7037,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 21955,
+    "rendite_auf_capex": 0.201,
+    "amortisation_jahre": 2.7,
+    "break_even_usd_gpu_h": 0.808
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 44558
+   },
+   "szenario": "spot"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 10743.0,
+    "backup": 6257.0,
+    "strom": 18438.0,
+    "abgefuehrt": 4007.0,
+    "server_h": 18438.0,
+    "auslastung": 0.421
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 832,
+    "ersparnis_vs_wp_chf": 1429,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 1226,
+    "ersparnis_vs_oel_chf": 2104,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 4021
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 28042,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 6131,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": -2886,
+    "rendite_auf_capex": -0.026,
+    "amortisation_jahre": 6.7,
+    "break_even_usd_gpu_h": 0.948
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 38818
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "gratis",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 10743.0,
+    "backup": 6257.0,
+    "strom": 18438.0,
+    "abgefuehrt": 4007.0,
+    "server_h": 18438.0,
+    "auslastung": 0.421
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 0.0,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 832,
+    "ersparnis_vs_wp_chf": 1429,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 1226,
+    "ersparnis_vs_oel_chf": 2104,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 4021
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 45486,
+    "erloes_waerme_chf": 0,
+    "kosten_chf": {
+     "strom": 6131,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 14559,
+    "rendite_auf_capex": 0.134,
+    "amortisation_jahre": 3.2,
+    "break_even_usd_gpu_h": 0.948
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 38818
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 0.86,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 10743.0,
+    "backup": 6257.0,
+    "strom": 18438.0,
+    "abgefuehrt": 4007.0,
+    "server_h": 18438.0,
+    "auslastung": 0.421
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 1832,
+    "ersparnis_vs_wp_chf": 429,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 2226,
+    "ersparnis_vs_oel_chf": 1104,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3021
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 28042,
+    "erloes_waerme_chf": 1000,
+    "kosten_chf": {
+     "strom": 6131,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": -1885,
+    "rendite_auf_capex": -0.017,
+    "amortisation_jahre": 6.3,
+    "break_even_usd_gpu_h": 0.918
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 0.86,
+    "vs_aws_l40s": 0.538,
+    "vs_median": 0.452,
+    "gpu_h_pro_jahr": 38818
+   },
+   "szenario": "alibaba"
+  },
+  {
+   "haus": "Durchschnitts-EFH 17'000 kWh",
+   "kw": 5,
+   "waermemodell": "waermeabo",
+   "rechenpreis_usd_gpu_h": 1.395,
+   "physik": {
+    "n": 5,
+    "bedarf": 17000.0,
+    "genutzt": 10743.0,
+    "backup": 6257.0,
+    "strom": 18438.0,
+    "abgefuehrt": 4007.0,
+    "server_h": 18438.0,
+    "auslastung": 0.421
+   },
+   "haushalt": {
+    "waermepreis_rp_kwh": 9.31,
+    "vorher_wp_chf": 2261,
+    "nachher_wp_chf": 1832,
+    "ersparnis_vs_wp_chf": 429,
+    "vorher_oel_chf": 3330,
+    "nachher_oel_chf": 2226,
+    "ersparnis_vs_oel_chf": 1104,
+    "vermiedene_wp_chf_jahr": 1917,
+    "ersparnis_vs_oel_plus_wp_ersatz_chf": 3021
+   },
+   "digitalheat": {
+    "capex_chf": 108974,
+    "hardware_chf": 88974,
+    "erloes_rechnen_chf": 45486,
+    "erloes_waerme_chf": 1000,
+    "kosten_chf": {
+     "strom": 6131,
+     "hardware_abschreibung": 17795,
+     "hardware_unterhalt": 4449,
+     "installation_abschreibung": 1333,
+     "netz": 720,
+     "betrieb": 500
+    },
+    "gewinn_chf_jahr": 15559,
+    "rendite_auf_capex": 0.143,
+    "amortisation_jahre": 3.1,
+    "break_even_usd_gpu_h": 0.918
+   },
+   "pharma": {
+    "preis_usd_gpu_h": 1.395,
+    "vs_aws_l40s": 0.25,
+    "vs_median": 0.111,
+    "gpu_h_pro_jahr": 38818
+   },
+   "szenario": "alibaba"
+  }
+ ]
+}
