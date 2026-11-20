@@ -401,6 +401,13 @@ function annahmenKurz() {
       `Wärme ohne Wärmepumpe direkt für Heizung und Warmwasser ${s("Case")}`,
       `<b>Läuft ein Server, läuft er voll</b> (Aufträge dicht gepackt)`,
       `1 kW entspricht ≈ 1,6 H100-GPUs ${s("MLPerf v5.0, 8 GPUs = 4,85 kW")}`]],
+    ["So baut DigitalHeat", [
+      `Direkte Flüssigkeitskühlung an den Prozessoren, eigener Kühlkreis ${s("digitalheat.ch")}`,
+      `Wärmetauscher trennt Kühlkreis und Heizwasser: Das Heizwasser kommt nie an die Server`,
+      `50–70 °C Vorlauf: reicht für Heizung und Warmwasser ohne Wärmepumpe`,
+      `5–20 kW pro Einheit: <b>unsere 8 Server = eine Einheit von 8 kW</b>`,
+      `DigitalHeat besitzt die Server, das Haus kauft Wärme als Dienstleistung`,
+      `Nicht angegeben: Kühlmittel, Anteil zurückgewonnener Wärme, Preise`]],
     ["Preise", [
       `Strom ${fmt(a("strompreis_chf_kwh") * 100, 2)} Rp./kWh ${s("ElCom 2026, IWB Basel, H4")}`,
       `Wärme ${fmt(a("waermewert_chf_kwh") * 100, 1)} Rp./kWh = Strompreis ÷ 2,5 ${s("ersetzt Wärmepumpe")}`,
@@ -428,6 +435,7 @@ function annahmenKurz() {
     "Fällt der Rechenpreis unter den Break-even, deckt der Erlös nicht einmal den Strom.",
     "Ist ein Server pro Jahr teurer als das Ergebnis oben, lohnt es sich nicht (Regler Hardware).",
     "Im Sommer fehlt im Einfamilienhaus der Wärmeabnehmer. Ohne zweiten Standort (Hotel, Landwirtschaft) bleiben die Server dann fast still.",
+    "DigitalHeat zielt auf feste Rechenkunden (Firmen, Forschung, Hochschulen) statt auf einen Spot-Markt. Das Szenario «Nur Jobs mit Frist» liegt deshalb womöglich näher an der Realität.",
   ];
   $("annahmenKurz").innerHTML = gruppen.map(([t, l]) =>
     `<div><h3>${t}</h3><ul>${l.map((x) => `<li>${x}</li>`).join("")}</ul></div>`).join("") +
