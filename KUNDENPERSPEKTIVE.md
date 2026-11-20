@@ -3,7 +3,7 @@
 Rechnung: `python3 src/kunde/wirtschaftlichkeit.py` → `daten/ergebnisse/win_win_win.json`. Die Physik (Deckung, Strom, Auslastung) kommt aus derselben Jahressimulation wie die Bilanz. «ANNAHME» = selbst gesetzt, noch zu prüfen.
 
 ## 1. Vorgehen für die Kundenperspektive
-1. **Kunde festlegen:** Eigentümer eines Einfamilienhauses in Basel, der die Heizung ersetzen muss oder will (alte Öl- oder Gasheizung, Basel verlangt beim Ersatz erneuerbare Wärme).
+1. **Kunde festlegen:** Eigentümer eines Einfamilienhauses in Basel **mit Ölheizung**, der aus dem Öl aussteigen will, ohne gleich eine teure Wärmepumpe und Sanierung zu finanzieren (Pilot, Abschnitt 3b).
 2. **Heutige Kosten kennen:** Was zahlt der Haushalt heute für Wärme (Öl, Gas, Wärmepumpe) und was würde ein Heizungsersatz kosten?
 3. **Angebot rechnen:** Wer zahlt was (Server, Strom, Installation, Wärme)? Mehrere Modelle vergleichen.
 4. **Einwände sammeln:** Lärm, Platz, Sicherheit, Haftung, Internet, was passiert beim Ausfall, beim Umzug, nach Vertragsende?
@@ -44,6 +44,41 @@ Grundlagen: Strom 33,25 Rp./kWh (ElCom 2026, IWB), Wärmepumpe JAZ 2,5 (Case) �
 
 **Wichtigster Vorbehalt:** Ob die Serverheizung in Basel als erneuerbarer Heizungsersatz gilt (Energiegesetz BS), ist offen. Nur dann entfällt die neue Wärmepumpe. Klärung beim Amt für Umwelt und Energie, Abteilung Energie.
 
+## 3b. Pilot: Umstieg für Ölheizungs-Besitzer
+**Idee:** Die Serverheizung ersetzt keine Wärmepumpe. Sie wird **neben die bestehende Ölheizung** gebaut. Die Ölheizung bleibt als Backup für die kältesten Stunden. So steigt der Haushalt ohne eigene Investition sofort fast ganz aus dem Öl aus und kann später in Ruhe entscheiden, was nach dem Ende des Ölkessels kommt.
+
+**Was sich für den Haushalt ändert** (Gratiswärme, flexible Aufträge vorausgesetzt):
+
+| | Referenzhaus (31'231 kWh) | Durchschnitts-EFH (17'000 kWh) |
+|---|---|---|
+| Heizöl heute | 3'674 l/Jahr | 2'000 l/Jahr |
+| Heizöl mit Serverheizung | **259 l/Jahr (−93 %)** | **8 l/Jahr (−100 %)** |
+| Heizkosten heute | 6'118 CHF/Jahr | 3'330 CHF/Jahr |
+| Heizkosten mit Serverheizung | **432 CHF/Jahr** | **13 CHF/Jahr** |
+| **Ersparnis** | **5'686 CHF/Jahr** | **3'317 CHF/Jahr** |
+| CO2 heute → nachher | 9,7 t → **0,7 t** | 5,3 t → **0,0 t** |
+| Eigene Investition | **0 CHF** | **0 CHF** |
+
+Gibt es zu wenig flexible Aufträge (Szenario «Nur Jobs mit Frist»), sinkt der Ölverbrauch nur um 52 % bzw. 63 % (Ersparnis 3'164 bzw. 2'104 CHF/Jahr). Die Antwort der Säule Pharma dazu ist deshalb für den Pilot entscheidend.
+
+Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (ANNAHME), 2,65 kg CO2 pro Liter Heizöl EL. Die CO2-Abgabe steckt im Ölpreis.
+
+**Warum das gerade für Ölheizungs-Häuser passt**
+- **Keine Sanierung nötig:** Alte Häuser mit Ölheizung haben oft Radiatoren, die 55–70 °C brauchen. Eine Wärmepumpe arbeitet dort schlecht oder braucht zuerst Dämmung und neue Heizkörper. Die Serverheizung liefert laut DigitalHeat 50–70 °C Vorlauf und passt an die bestehenden Radiatoren.
+- **Keine Investition, kein Zeitdruck:** Der Ölkessel läuft weiter als Backup. Der Heizungsersatz wird um Jahre verschoben, und bis dahin sind kaum noch Öl und CO2 im Spiel.
+- **Sofort sichtbar:** Der Öltank leert sich kaum noch. Das sieht der Kunde direkt, auch ohne App.
+- **Rechtlich einfacher (ANNAHME, zu prüfen):** Weil der Ölkessel nicht ersetzt, sondern ergänzt wird, greift die Ersatzpflicht für erneuerbare Heizungen in Basel-Stadt im Pilot vermutlich noch nicht. Beim späteren Ersatz des Kessels stellt sich die Frage wieder.
+
+**Pilot-Aufbau (Vorschlag)**
+| | |
+|---|---|
+| Teilnehmende | 5–10 Einfamilienhäuser in Basel mit Ölheizung |
+| Voraussetzungen | Platz im Keller oder Heizraum (Öltank-Raum wird oft frei), Wasser-Heizsystem, Starkstromanschluss, Glasfaser oder gutes Internet |
+| Dauer | 1 Jahr, damit Winter und Sommer drin sind |
+| Kosten für den Haushalt | keine. Einbau, Server, Strom und Rückbau zahlt DigitalHeat |
+| Was gemessen wird | Heizöl in Litern (vorher/nachher), Wärme vom Server, Raumtemperatur und Komfort, Lärm, Ausfälle, Zufriedenheit |
+| Nach dem Pilot | Kunde wählt: weiter mit Gratiswärme oder Wärmeabo, oder Rückbau ohne Kosten |
+
 ## 4. Schnittstellen zu den anderen Säulen (von Kollegen zu bestätigen)
 Diese Werte rechnet nicht die Kundenperspektive. Sie sind nur so weit drin, wie das Kundenangebot von ihnen abhängt.
 
@@ -66,7 +101,7 @@ Eine erste Rechnung der Firmenseite (zur Kontrolle, nicht mein Teil) liegt in `d
 | **Gebäudeprogramm** (CO2-Abgabe) | Haushalt | Dämmung, erneuerbare Heizungen | über Kanton |
 Förderungen sind im Rechenbeispiel nicht eingerechnet (ausser der vermiedenen Wärmepumpenförderung). Sie sind ein Zusatzvorteil.
 
-Hinweis für die Säule Firma (nicht Teil der Kundenperspektive): BFE-Pilot- und Demonstrationsprojekte, Innosuisse und CO2-Bescheinigungen (z. B. Stiftung KliK, rund 8 t CO2 pro ersetzter Ölheizung und Jahr) könnten für DigitalHeat selbst in Frage kommen.
+Hinweis für die Säule Firma (nicht Teil der Kundenperspektive): BFE-Pilot- und Demonstrationsprojekte, Innosuisse und CO2-Bescheinigungen (z. B. Stiftung KliK, 5–10 t CO2 pro Haus und Jahr, wenn Öl verdrängt wird) könnten für DigitalHeat selbst in Frage kommen.
 
 ## 6. Partner, die der Kunde spürt
 | Partner | Was der Kunde davon hat |
@@ -78,7 +113,7 @@ Hinweis für die Säule Firma (nicht Teil der Kundenperspektive): BFE-Pilot- und
 | **Bank** (grüne Hypothek, z. B. BKB) | günstigere Hypothek für ein Haus mit erneuerbarer Wärme |
 
 ## 7. Das Angebot an den Kunden in einem Satz
-**DigitalHeat stellt eine Serverheizung kostenlos in den Keller, zahlt deren Strom und Unterhalt, und der Haushalt bekommt über 90 % seiner Wärme gratis. Das spart 2'300–5'700 CHF pro Jahr und erspart oft den teuren Heizungsersatz.**
+**DigitalHeat stellt eine Serverheizung kostenlos neben die Ölheizung, zahlt deren Strom und Unterhalt, und der Haushalt braucht über 90 % weniger Heizöl. Das spart 3'300–5'700 CHF pro Jahr, ohne eigene Investition und ohne Sanierung.**
 
 Einwände und Antworten:
 | Einwand | Antwort |
