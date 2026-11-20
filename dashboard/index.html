@@ -86,6 +86,13 @@ th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--grid
 th { color: var(--ink-2); font-weight: 600; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 details summary { cursor: pointer; font-weight: 600; }
+.annahmen { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 20px; margin-top: 12px; }
+.annahmen h3 { font-size: 14px; margin: 0 0 4px; }
+.annahmen ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
+.annahmen li { margin: 2px 0; }
+.annahmen li b { color: var(--ink); }
+.annahmen .src { color: var(--muted); font-size: 12px; }
+.grenze { border-left: 3px solid var(--critical); padding-left: 10px; }
 .toggle { font-size: 13px; color: var(--s1); background: none; border: 0; cursor: pointer; padding: 0; }
 </style>
 </head>
@@ -119,6 +126,12 @@ details summary { cursor: pointer; font-weight: 600; }
     <div class="ctl"><label for="pHw">Hardware pro Server und Jahr</label>
       <div class="range"><input id="pHw" type="range" min="0" max="15000" step="250" value="0"><output id="pHwOut"></output></div></div>
   </div>
+
+  <section class="card" style="margin-bottom:16px">
+    <h2>Annahmen auf einen Blick</h2>
+    <div class="note">Darauf beruhen alle Zahlen dieser Seite. Fett = stärkste Annahmen, die das Ergebnis am meisten verändern.</div>
+    <div class="annahmen" id="annahmenKurz"></div>
+  </section>
 
   <div class="grid3">
     <section class="card">
@@ -368,7 +381,55 @@ async function live() {
   }
 }
 
-// ---------- Annahmen ----------
+// ---------- Annahmen auf einen Blick ----------
+function annahmenKurz() {
+  const a = (k) => D.annahmen[k].wert;
+  const s = (t) => `<span class="src">${t}</span>`;
+  const gruppen = [
+    ["Haus (Referenz Basel)", [
+      `Wetter Basel 2025, stündlich ${s("Open-Meteo")}`,
+      `Heizung ${s("max(0, 10 kW × (20 − T) ÷ 25,6), nur an 206 Heiztagen")} = 26'851 kWh/Jahr`,
+      `Warmwasser 12 kWh pro Tag, gleichmässig über den Tag = 4'380 kWh/Jahr`,
+      `Wassertank ${fmt(a("speicher_kwh"))} kWh, <b>ohne Verluste</b>`,
+      `Was die Server nicht decken, liefert eine Backup-Heizung ausserhalb des Modells`]],
+    ["Server", [
+      `1 Server = ${fmt(a("server_kw"))} kW Strom, ${pct(a("waermerueckgewinnung"), 0)} davon als nutzbare Wärme`,
+      `Wärme ohne Wärmepumpe direkt für Heizung und Warmwasser ${s("Case")}`,
+      `<b>Läuft ein Server, läuft er voll</b> (Aufträge dicht gepackt)`,
+      `1 kW entspricht ≈ 1,6 H100-GPUs ${s("MLPerf v5.0, 8 GPUs = 4,85 kW")}`]],
+    ["Preise", [
+      `Strom ${fmt(a("strompreis_chf_kwh") * 100, 2)} Rp./kWh ${s("ElCom 2026, IWB Basel, H4")}`,
+      `Wärme ${fmt(a("waermewert_chf_kwh") * 100, 1)} Rp./kWh = Strompreis ÷ 2,5 ${s("ersetzt Wärmepumpe")}`,
+      `Rechenzeit ${fmt(a("rechenpreis_usd_server_h"), 2)} $ pro Server-h ${s("günstigster Spot-Preis H100 × 1,6")}`,
+      `<b>Wechselkurs ${fmt(a("usd_chf"), 2)} CHF/$ noch ohne Quelle</b>`,
+      `<b>Hardwarekosten nicht im Modell</b>, nur als Grenze (Regler oben)`]],
+    ["Aufträge", [
+      `A: Texte aufbereiten (Embeddings), ${fmt(a("job_a_kwh"), 2)} kWh ≈ 1 h, pausierbar, Frist ${a("job_a_frist_h")} h ${s("selbst gemessen, 28,9 W")}`,
+      `B: Bilder prüfen, ${fmt(a("job_b_kwh"), 2)} kWh ≈ 7 min, nicht unterbrechbar, Frist ${a("job_b_frist_h")} h ${s("MLPerf v5.0")}`,
+      `Umrechnung auf 1 kW: gleiche Arbeit pro kWh wie gemessen`,
+      `Fristen und Auftragsgrössen selbst festgelegt`]],
+    ["Nachfrage nach Rechenzeit", [
+      `<b>Spot-Markt: Es gibt jederzeit genug Aufträge A</b> (Standard)`,
+      `Alternative: nur Aufträge mit Frist, ${fmt(a("nachfrage_server_h_pro_server_tag"), 1)} Server-h pro Server und Tag ${s("Alibaba-GPU-Trace 2020")}`,
+      `Kurze Aufträge (B) = ${pct(a("anteil_kurze_jobs_gpu_h"), 0)} der Rechenzeit ${s("Alibaba")}`,
+      `Ankünfte über den Tag nach Alibaba-Tagesform, feste Zufallssaat`]],
+    ["Scheduler", [
+      `Rechnet Stunde für Stunde, kennt nur den Bedarf der laufenden Stunde (<b>keine Wetterprognose</b>)`,
+      `Zuerst Aufträge, deren Frist sonst reisst (2 h Puffer), dann so viel, wie Haus und Speicher Wärme brauchen`,
+      `Wärme nicht gebraucht: trotzdem rechnen (abführen) oder Auftrag an anderen Standort`]],
+  ];
+  const grenzen = [
+    "Gibt es weniger flexible Aufträge als angenommen, sinkt die Deckung auf etwa 52 % (Umschalter «Nur Jobs mit Frist»).",
+    "Fällt der Rechenpreis unter den Break-even, deckt der Erlös nicht einmal den Strom.",
+    "Ist ein Server pro Jahr teurer als das Ergebnis oben, lohnt es sich nicht (Regler Hardware).",
+    "Im Sommer fehlt im Einfamilienhaus der Wärmeabnehmer. Ohne zweiten Standort (Hotel, Landwirtschaft) bleiben die Server dann fast still.",
+  ];
+  $("annahmenKurz").innerHTML = gruppen.map(([t, l]) =>
+    `<div><h3>${t}</h3><ul>${l.map((x) => `<li>${x}</li>`).join("")}</ul></div>`).join("") +
+    `<div class="grenze"><h3>Wo die Annahmen nicht mehr gelten</h3><ul>${grenzen.map((x) => `<li>${x}</li>`).join("")}</ul></div>`;
+}
+
+// ---------- Annahmen (Tabelle mit Quelle) ----------
 function annahmen() {
   $("annahmen").innerHTML = "<table><tr><th>Annahme</th><th>Wert</th><th>Quelle</th></tr>" +
     Object.entries(D.annahmen).map(([k, a]) => `<tr><td>${k.replaceAll("_", " ")}</td>
@@ -387,7 +448,7 @@ document.querySelectorAll(".seg").forEach((seg) => seg.addEventListener("click",
   S[seg.dataset.key] = b.dataset.v; alles(); }));
 document.querySelectorAll("[data-table]").forEach((b) => b.addEventListener("click", () => {
   const t = $(b.dataset.table); t.hidden = !t.hidden; b.textContent = t.hidden ? "Tabelle zeigen" : "Tabelle ausblenden"; }));
-annahmen(); alles(); live(); setInterval(live, 1000);
+annahmenKurz(); annahmen(); alles(); live(); setInterval(live, 1000);
 </script>
 </body>
 </html>

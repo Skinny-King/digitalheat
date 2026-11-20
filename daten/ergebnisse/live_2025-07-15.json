@@ -3,7 +3,7 @@
  "server": 8,
  "szenario": "spot",
  "echter_server": 1,
- "pid": 97919,
+ "pid": 859,
  "stunden": [
   {
    "zeit": "2025-07-15T00:00",
@@ -23,7 +23,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 6656,
+   "texte_fertig": 10496,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -44,7 +44,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 6784,
+   "texte_fertig": 10624,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -65,7 +65,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 6912,
+   "texte_fertig": 10752,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -86,7 +86,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7168,
+   "texte_fertig": 10880,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -107,7 +107,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7296,
+   "texte_fertig": 11008,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -128,7 +128,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7424,
+   "texte_fertig": 11264,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -149,7 +149,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7680,
+   "texte_fertig": 11392,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -170,7 +170,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7808,
+   "texte_fertig": 11520,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -191,7 +191,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 7936,
+   "texte_fertig": 11648,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -212,7 +212,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8064,
+   "texte_fertig": 11776,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -233,7 +233,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8192,
+   "texte_fertig": 11904,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -254,7 +254,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8320,
+   "texte_fertig": 12032,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -275,7 +275,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8448,
+   "texte_fertig": 12288,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -296,7 +296,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8576,
+   "texte_fertig": 12416,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -317,7 +317,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8704,
+   "texte_fertig": 12672,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -338,7 +338,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 8960,
+   "texte_fertig": 12672,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -359,7 +359,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9088,
+   "texte_fertig": 12800,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -380,7 +380,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9344,
+   "texte_fertig": 12928,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -401,7 +401,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9472,
+   "texte_fertig": 13184,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -422,7 +422,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9600,
+   "texte_fertig": 13312,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -443,7 +443,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9728,
+   "texte_fertig": 13440,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -464,7 +464,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 9856,
+   "texte_fertig": 13568,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -485,7 +485,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 10112,
+   "texte_fertig": 13824,
    "echtzeit_ein_s": 1.88
   },
   {
@@ -506,7 +506,7 @@
    "abgegeben": 0,
    "echter_server": 1,
    "anteil_echter_server": 0.625,
-   "texte_fertig": 10240,
+   "texte_fertig": 13952,
    "echtzeit_ein_s": 1.88
   }
  ]
