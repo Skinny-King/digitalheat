@@ -75,7 +75,18 @@ Rechnung: `src/kunde/wirtschaftlichkeit.py` (alle Werte stehen dort in `P` mit Q
 | Neue Öl-/Gasheizungen verboten | seit 2017 | Belegt | [BKB](https://www.bkb.ch/de/privatkunden/magazin/2024/heizsysteme-basel-stadt-verzicht-auf-gas-und-oel-bis-2037-lohnt-sich-auch-finanziell) |
 | Gebiete ohne Fernwärme | 5,3 km² mit dezentraler Lösung vorgesehen (Fernwärme 12,2 km²) | Belegt + Abgeleitet | Geoportal BS, Teilrichtplan Energie (WFS `ms:EP_Energierichtplan_*`), Flächen eigene Berechnung, `dashboard/karte_fernwaerme.html` |
 
-## 7. Was die Kundenperspektive nicht annimmt
+## 8. Nordwestschweiz (siehe KUNDE_NORDWESTSCHWEIZ.md)
+| Annahme | Wert | Status | Quelle |
+|---|---|---|---|
+| Region | BS, BL, AG (BFS-Grossregion) | Belegt | BFS |
+| Strom BL | 30,20 Rp./kWh (EBL, N-Basis, 2026; MwSt. nicht angegeben) | Belegt | [EBL Mitteilung 2026](https://www.ebl.ch/hubfs/EBL/_EBL%20Website/Preisbl%C3%A4tter%202026/Mitteilung%20zu%20den%20Tarif%C3%A4nderungen%202026.pdf), Kopie in `daten/roh/elcom/` |
+| Strom AG | 30,15 Rp./kWh (AEW, H4, 2026, inkl. MwSt.) | Belegt | [AEW info August 2025](https://www.aew.ch/sites/default/files/2025-11/AEW_info_August_2025_Mitteilungen_zu_Tarifaenderungen_im_Jahr_2026_neu3.pdf) |
+| Gas BL/AG | wie IWB 2026 | Annahme | für AG ohne Quelle |
+| Öl- und Gas-Wohngebäude BL | 28,9 % / 30,7 % von 66'780 (2024) | Belegt | [Energiestatistik BL 2024](https://www.baselland.ch/politik-und-behorden/direktionen/finanz-und-kirchendirektion/daten-statistik/abteilung-statistik/publikationen-und-statistiken/energie/webartikel-vom-07-07-2026-energiestatistik-2024) |
+| Öl- und Gas-Wohnungen AG | 135'574 / 58'620 von 348'656 (2024) | Belegt | [Statistisches Jahrbuch AG 2025](https://www.ag.ch/app/staag/statistisches_jahrbuch/chapters/09_bau.html) |
+| Wetter | Basel 2025 für die ganze Region | Annahme | Aargau etwas kühler |
+
+## 9. Was die Kundenperspektive nicht annimmt
 - Gewinn und Preise von DigitalHeat: Säule Firma (anderer Chat)
 - Rechenpreise, Aufträge und Sicherheit: Säule Pharma
 - Hardwarekosten: nur als Begründung, warum der Haushalt nicht selbst kauft

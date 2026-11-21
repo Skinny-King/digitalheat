@@ -100,6 +100,8 @@ Wird der Gasanschluss aufgegeben, übernimmt ein Heizstab im Wärmespeicher die 
 
 **Karte:** `dashboard/karte_fernwaerme.html` zeigt die Gebiete ohne Fernwärme (Energierichtplan BS): vor allem Bruderholz, Riehen, Bettingen und Teile am Westrand von Basel, zusammen rund 5,3 km².
 
+**Ganze Nordwestschweiz (BS, BL, AG):** siehe `KUNDE_NORDWESTSCHWEIZ.md`.
+
 **Warum mit Öl anfangen (Einstiegsstrategie)**
 Ölheizungs-Besitzer in Basel-Stadt sind die Gruppe mit dem grössten Druck und dem grössten Gewinn: höchste Heizkosten (19,6 Rp./kWh Wärme), politisches Ziel «fossilfrei bis 2037», oft alte Häuser, in denen eine Wärmepumpe schlecht passt. Sie wechseln am schnellsten und werden zu sichtbaren Referenzen. Danach folgen die anderen:
 
