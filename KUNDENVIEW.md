@@ -85,6 +85,8 @@ Warum der Haushalt die Anlage nicht selbst kauft: Eine 8-kW-Einheit kostet gesch
 | **B Wärmeabo** | Preis pro kWh, legt die Säule Firma fest | lohnt sich bis zur Schwelle in Abschnitt 4.3 |
 | C Kunde kauft die Anlage | ≈ 162'000 CHF | nicht sinnvoll: zu teuer, zu riskant |
 
+**Wohin der Ertrag der Rechenleistung fliesst:** Der Pharmakunde zahlt DigitalHeat für die Rechenzeit. DigitalHeat zahlt davon Strom, Hardware, Einbau und Unterhalt. Der Haushalt bekommt keinen Anteil am Rechenerlös, sondern die Wärme gratis und trägt kein Risiko. Ob er zusätzlich einen Bonus oder eine Platzmiete erhält, entscheidet die Säule Firma (Abschnitt 11).
+
 ### 3.2 Die bestehende Heizung bleibt als Backup
 Die Serverheizung kommt **neben** die bestehende Heizung. Für die kältesten Stunden und bei Ausfällen springt das Backup ein.
 
@@ -270,6 +272,7 @@ Nordwestschweiz = Grossregion des BFS: Basel-Stadt, Basel-Landschaft, Aargau.
 | Einheitengrösse pro Haus | Firma | Platz, Lärm, Anschluss | 8 kW / 5 kW |
 | Sicherheitsauflagen im Haus | Pharma | was der Haushalt dulden muss | kein Zugang, verplombt |
 | Vertrag, Kündigung, Konkurs | Firma | Vertrauen | Backup bleibt immer |
+| Bekommt der Haushalt einen Anteil am Rechenerlös (Bonus, Platzmiete)? | Firma | Der Rechenerlös fliesst heute ganz an DigitalHeat; ein Anteil macht das Angebot stärker, besonders für Wärmepumpen-Haushalte | kein Anteil, nur Gratiswärme |
 
 ---
 
