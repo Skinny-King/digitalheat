@@ -75,6 +75,18 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 - Neue Öl- und Gasheizungen sind in BS seit 2017 grundsätzlich verboten. Ziel des Kantons: fossilfreie Wärme bis 2037.
 - **Folge für den Pilot:** Basel-Stadt eignet sich als Testgebiet, der grosse Markt liegt aber in den Nachbarkantonen (z. B. Basel-Landschaft) und in der übrigen Schweiz. Spätestens 2037 muss der Öl-Backup in BS durch ein erneuerbares Backup ersetzt werden.
 
+**Gas in Basel-Stadt**
+- IWB liefert Gas an **knapp 11'000 Liegenschaften** in Basel, Riehen und Bettingen (Bericht 2024, Liegenschaften, nicht Heizungen). Das sind rund sechsmal mehr als Ölfeuerungen.
+- Der Grosse Rat hat im Januar 2023 beschlossen: **Das Gasnetz wird bis 2037 stillgelegt.** Erste Stilllegungen 2026/2027, **ab 2028 nimmt IWB rund 1'000 Gasanschlüsse pro Jahr vom Netz.**
+- Rund die Hälfte der Gasheizungen ist älter als 15 Jahre (IWB-CEO, laut Presse).
+- Wo möglich, ersetzt IWB das Gas durch **Fernwärme**. Wo Fernwärme noch fehlt, kann der Regierungsrat die Gasversorgung befristet verlängern.
+
+**Was das für die Kundenperspektive heisst**
+- **Gas-Haushalte müssen wechseln, ob sie wollen oder nicht**, mit festem Datum. Das ist ein grösserer und dringenderer Markt als Öl.
+- **Aber:** Der Gas-Backup läuft mit der Stilllegung aus. Ein Gas-Haushalt braucht beim Umstieg auf die Serverheizung ein anderes Backup (z. B. eine kleine Wärmepumpe oder einen Elektroeinsatz im Speicher).
+- **Konkurrenz Fernwärme:** Im Fernwärmegebiet ist der Anschluss an die Fernwärme die naheliegende Lösung, und kantonale Förderung für dezentrale Heizungen ist dort halbiert. Die Serverheizung zielt deshalb auf **Gas-Haushalte ausserhalb des Fernwärmegebiets** (z. B. in Riehen und Bettingen).
+- **Folge für die Reihenfolge:** Öl bleibt der beste Einstieg für den Pilot (Backup bleibt, höchste Ersparnis). Gas ist danach der grösste Markt in Basel-Stadt, mit klarem Termindruck bis 2037.
+
 **Warum mit Öl anfangen (Einstiegsstrategie)**
 Ölheizungs-Besitzer in Basel-Stadt sind die Gruppe mit dem grössten Druck und dem grössten Gewinn: höchste Heizkosten (19,6 Rp./kWh Wärme), politisches Ziel «fossilfrei bis 2037», oft alte Häuser, in denen eine Wärmepumpe schlecht passt. Sie wechseln am schnellsten und werden zu sichtbaren Referenzen. Danach folgen die anderen:
 
@@ -82,7 +94,7 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 |---|---|---|
 | **1 Pilot** | Ölheizungen in Basel-Stadt (5–10 EFH) | −93 bis −100 % Heizöl, 0 CHF Investition, Referenzen schaffen |
 | **2 Ausrollen Öl** | Ölheizungen in Basel-Landschaft und weiteren Kantonen (25–40 % Ölanteil) | gleiches Angebot, grosser Markt |
-| **3 Gas** | Gasheizungen (BS: Gasnetz wird bis 2037 stillgelegt) | Ausstieg aus Gas ohne eigene Investition |
+| **3 Gas** | Gasheizungen (BS: Gasnetz wird bis 2037 stillgelegt, siehe unten) | Ausstieg aus Gas ohne eigene Investition |
 | **4 Alle Haushalte** | Häuser mit Wärmepumpe oder Neubauten, Mehrfamilienhäuser | Gratiswärme statt Strom für die Wärmepumpe, Warmwasser im Sommer |
 
 **Pilot-Aufbau (Vorschlag)**
