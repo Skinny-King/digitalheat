@@ -7,7 +7,8 @@
 - Abgeleitet: `referenzprofil_2025.csv` über `src/referenzprofil.py`
   - 206 Heiztage, kälteste Stunde −5,6 °C, Spitze 10,0 kW
   - Heizbedarf 26'851 kWh, Warmwasser 4'380 kWh (12 kWh/Tag, gleichmässig 0,5 kW), total 31'231 kWh
-  - Stimmt mit dem Case überein (≈ 27'000 kWh, 206 Tage). Mit dem offiziellen CSV des Case abgleichen, sobald es vorliegt.
+  - Stimmt mit dem Case überein (≈ 27'000 kWh, 206 Tage).
+  - **Abgleich mit dem offiziellen CSV des Case** (`roh/offiziell/open-meteo-47.56N7.55E247m.csv`, erhalten 20.11.2026): alle 8'760 Stunden und Temperaturen identisch (max. Abweichung 0,0 °C). Daraus gerechnet: ebenfalls 206 Heiztage, 26'851 kWh, kälteste Stunde −5,6 °C (31.12.2025, 23 Uhr). Das offizielle CSV enthält nur `temperature_2m`, Zeitzone Europe/Berlin (gleiche Uhrzeit wie Europe/Zurich), keine Sonneneinstrahlung und keinen fertigen Heizbedarf. Heizbedarf und Warmwasser rechnet deshalb weiterhin `src/referenzprofil.py` nach der Formel des Case.
 
 ## Strompreis – ElCom 2026, IWB Basel, Kategorie H4
 - Datei: `roh/elcom/iwb_h4_2026.json`
@@ -36,6 +37,5 @@
 - Zitieren: Weng et al., «MLaaS in the Wild», NSDI ’22
 
 ## Noch offen
-- Offizielles Referenzprofil-CSV von DigitalHeat
-- Cloud-Preise siehe `PREISE.md` (Hardwarekosten und Wechselkurs noch offen)
+- Cloud-Preise siehe `PREISE.md` (Hardwarekosten noch offen, Wechselkurs 0,84 CHF/USD gesetzt)
 - Gaspreise (Quelle in NOTIZEN.md abgeschnitten)
