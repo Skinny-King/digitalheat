@@ -69,6 +69,12 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 - **Sofort sichtbar:** Der Öltank leert sich kaum noch. Das sieht der Kunde direkt, auch ohne App.
 - **Rechtlich einfacher (ANNAHME, zu prüfen):** Weil der Ölkessel nicht ersetzt, sondern ergänzt wird, greift die Ersatzpflicht für erneuerbare Heizungen in Basel-Stadt im Pilot vermutlich noch nicht. Beim späteren Ersatz des Kessels stellt sich die Frage wieder.
 
+**Markt in Basel-Stadt**
+- **1'677 Ölfeuerungen (Juni 2026)**, nach 1'729 (Dez. 2025), 1'847 (Ende 2024) und 2'631 (Ende 2018). Quelle: Open Data des Amts für Umwelt und Energie BS, gemeldete Anlagen, alle Gebäudetypen, nicht nur Einfamilienhäuser.
+- Öl heizt in BS nur noch 8 % der Wohngebäude (BFS). In den meisten anderen Kantonen sind es 25–40 %.
+- Neue Öl- und Gasheizungen sind in BS seit 2017 grundsätzlich verboten. Ziel des Kantons: fossilfreie Wärme bis 2037.
+- **Folge für den Pilot:** Basel-Stadt eignet sich als Testgebiet, der grosse Markt liegt aber in den Nachbarkantonen (z. B. Basel-Landschaft) und in der übrigen Schweiz. Spätestens 2037 muss der Öl-Backup in BS durch ein erneuerbares Backup ersetzt werden.
+
 **Pilot-Aufbau (Vorschlag)**
 | | |
 |---|---|
