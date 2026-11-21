@@ -75,6 +75,16 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 - Neue Öl- und Gasheizungen sind in BS seit 2017 grundsätzlich verboten. Ziel des Kantons: fossilfreie Wärme bis 2037.
 - **Folge für den Pilot:** Basel-Stadt eignet sich als Testgebiet, der grosse Markt liegt aber in den Nachbarkantonen (z. B. Basel-Landschaft) und in der übrigen Schweiz. Spätestens 2037 muss der Öl-Backup in BS durch ein erneuerbares Backup ersetzt werden.
 
+**Warum mit Öl anfangen (Einstiegsstrategie)**
+Ölheizungs-Besitzer in Basel-Stadt sind die Gruppe mit dem grössten Druck und dem grössten Gewinn: höchste Heizkosten (19,6 Rp./kWh Wärme), politisches Ziel «fossilfrei bis 2037», oft alte Häuser, in denen eine Wärmepumpe schlecht passt. Sie wechseln am schnellsten und werden zu sichtbaren Referenzen. Danach folgen die anderen:
+
+| Phase | Zielgruppe | Argument |
+|---|---|---|
+| **1 Pilot** | Ölheizungen in Basel-Stadt (5–10 EFH) | −93 bis −100 % Heizöl, 0 CHF Investition, Referenzen schaffen |
+| **2 Ausrollen Öl** | Ölheizungen in Basel-Landschaft und weiteren Kantonen (25–40 % Ölanteil) | gleiches Angebot, grosser Markt |
+| **3 Gas** | Gasheizungen (BS: Gasnetz wird bis 2037 stillgelegt) | Ausstieg aus Gas ohne eigene Investition |
+| **4 Alle Haushalte** | Häuser mit Wärmepumpe oder Neubauten, Mehrfamilienhäuser | Gratiswärme statt Strom für die Wärmepumpe, Warmwasser im Sommer |
+
 **Pilot-Aufbau (Vorschlag)**
 | | |
 |---|---|
