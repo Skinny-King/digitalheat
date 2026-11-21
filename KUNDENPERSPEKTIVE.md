@@ -21,7 +21,7 @@ Gründe:
 | Modell | Haushalt zahlt | Haushalt bekommt | Bewertung |
 |---|---|---|---|
 | **A Gratiswärme** (empfohlen für den Pilot) | nichts, stellt Platz und Anschluss | Wärme gratis | sehr einfach zu verkaufen |
-| **B Wärmeabo** | 9,3 Rp./kWh (30 % unter Wärmepumpe) | günstigere Wärme | mehr Erlös für DigitalHeat, schwächeres Argument |
+| **B Wärmeabo** | Preis pro kWh, legt die Säule Firma fest (Beispiel 9,3 Rp. = 30 % unter Wärmepumpe) | günstigere Wärme | schwächeres Argument, Ersparnis siehe 3d |
 | C Kunde kauft die Anlage | ≈ 162'000 CHF | Anteil am Rechenerlös | nicht sinnvoll: zu teuer, zu riskant |
 
 ## 3. Was spart der Haushalt? (Modell A, Gratiswärme)
@@ -122,6 +122,24 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 - **Reihenfolge der Attraktivität:** Öl vor Gas vor Wärmepumpe. Das bestätigt die Einstiegsstrategie mit Öl, Gas ist der logische zweite Schritt.
 
 Vorbehalte: Die Stufe M gilt laut IWB-Beispiel für ein Einfamilienhaus mit 20'000 kWh. Für das Referenzhaus (≈ 35'000 kWh Gas) ist die Stufe abgeleitet, nicht bestätigt. Anschlussleistung 15 kW (Referenzhaus) ist eine Annahme, 12 kW (Durchschnitt) aus dem IWB-Beispiel. Kesselwirkungsgrade und CO2-Faktoren sind Annahmen.
+
+## 3d. Ersparnis je nach Wärmepreis
+Den Wärmepreis legt die Säule Firma fest (anderer Chat). Für den Haushalt zählt nur: **Bis zu welchem Preis lohnt sich der Wechsel?**
+
+Ersparnis pro Jahr gegenüber der heutigen Heizung, Referenzhaus (29'027 kWh Serverwärme) / Durchschnitts-EFH (16'932 kWh):
+
+| Wärmepreis | vs. Öl | vs. Gas | vs. Wärmepumpe |
+|---|---|---|---|
+| 0 Rp./kWh (gratis) | 5'686 / 3'317 | 4'520 / 2'636 | 3'861 / 2'252 |
+| 3 Rp./kWh | 4'815 / 2'809 | 3'649 / 2'128 | 2'990 / 1'744 |
+| 5 Rp./kWh | 4'235 / 2'470 | 3'069 / 1'789 | 2'410 / 1'405 |
+| 8 Rp./kWh | 3'364 / 1'962 | 2'198 / 1'281 | 1'539 / 897 |
+| 10 Rp./kWh | 2'783 / 1'624 | 1'617 / 943 | 958 / 559 |
+| 13,3 Rp./kWh | 1'825 / 1'065 | 659 / 384 | 0 / 0 |
+
+**Schwelle, ab der sich der Wechsel nicht mehr lohnt:** Öl 19,6 Rp., Gas 15,6 Rp., Wärmepumpe 13,3 Rp. pro kWh Wärme.
+
+Damit der Wechsel für einen Öl-Haushalt **deutlich** attraktiv ist (über 2'000 CHF Ersparnis im Durchschnitts-EFH), darf die Wärme höchstens rund **7 Rp./kWh** kosten. Diese Zahl ist die Bitte der Kundenperspektive an die Säule Firma.
 
 ## 4. Schnittstellen zu den anderen Säulen (von Kollegen zu bestätigen)
 Diese Werte rechnet nicht die Kundenperspektive. Sie sind nur so weit drin, wie das Kundenangebot von ihnen abhängt.
