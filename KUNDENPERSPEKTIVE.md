@@ -1,5 +1,7 @@
 # Kundenperspektive (Haushalt) – Stand 21.11.2026
 
+> Zusammengeführt in **KUNDENVIEW.md** (Gesamtdokument). Diese Datei bleibt als Arbeitsstand.
+
 Rechnung: `python3 src/kunde/wirtschaftlichkeit.py` → `daten/ergebnisse/win_win_win.json`. Die Physik (Deckung, Strom, Auslastung) kommt aus derselben Jahressimulation wie die Bilanz. «ANNAHME» = selbst gesetzt, noch zu prüfen.
 
 ## 1. Vorgehen für die Kundenperspektive

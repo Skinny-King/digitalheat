@@ -1,5 +1,7 @@
 # Annahmen der Kundenperspektive mit Quellen (Stand 21.11.2026)
 
+> Zusammengeführt in **KUNDENVIEW.md** (Gesamtdokument). Diese Datei bleibt als Arbeitsstand.
+
 Status:
 - **Case** = Vorgabe von DigitalHeat im Hackathon
 - **Belegt** = aus einer öffentlichen Quelle übernommen

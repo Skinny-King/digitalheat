@@ -1,5 +1,7 @@
 # Kundenperspektive Nordwestschweiz (Stand 21.11.2026)
 
+> Zusammengeführt in **KUNDENVIEW.md** (Gesamtdokument). Diese Datei bleibt als Arbeitsstand.
+
 Nordwestschweiz = Grossregion des BFS: **Basel-Stadt, Basel-Landschaft, Aargau**. (Solothurn gehört beim BFS zum Espace Mittelland und ist hier nicht drin.)
 
 Die Physik (Deckung, Backup) ist dieselbe wie in Basel, gerechnet mit dem Wetter Basel 2025. Im Aargau ist es etwas kühler, die Deckung dürfte dort leicht tiefer liegen (nicht gerechnet).
