@@ -95,6 +95,34 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 | Was gemessen wird | Heizöl in Litern (vorher/nachher), Wärme vom Server, Raumtemperatur und Komfort, Lärm, Ausfälle, Zufriedenheit |
 | Nach dem Pilot | Kunde wählt: weiter mit Gratiswärme oder Wärmeabo, oder Rückbau ohne Kosten |
 
+## 3c. Vergleich: Serverheizung gegen Öl, Gas und Wärmepumpe
+**Was kostet 1 kWh Wärme?**
+
+| Heizung | Rp. pro kWh Wärme | Grundlage |
+|---|---|---|
+| Ölheizung | **19,6** | 1,665 CHF/l, 10 kWh/l, Kessel 85 % |
+| Gasheizung | **15,6** + 195 CHF/Jahr Grundgebühr | IWB 2026, Stufe M, inkl. MwSt.: 11,57 + CO2-Abgabe 2,33 + Konzession 0,11 Rp./kWh Gas, Kessel 90 % |
+| Wärmepumpe | **13,3** | Strom 33,25 Rp./kWh, JAZ 2,5 |
+| Serverheizung, Wärmeabo | 9,3 | 30 % unter Wärmepumpe |
+| **Serverheizung, Gratiswärme** | **0** | DigitalHeat zahlt Strom und Anlage |
+
+**Ersparnis pro Jahr, wenn die Serverheizung neben die bestehende Heizung kommt** (Gratiswärme, flexible Aufträge)
+
+| | Referenzhaus (31'231 kWh) | Durchschnitts-EFH (17'000 kWh) |
+|---|---|---|
+| **Öl:** heute → nachher | 6'118 → 432 CHF, **spart 5'686** | 3'330 → 13 CHF, **spart 3'317** |
+| **Gas:** heute → nachher | 5'057 → 538 CHF, **spart 4'520** | 2'841 → 205 CHF, **spart 2'636** |
+| **Wärmepumpe:** heute → nachher | 4'154 → 293 CHF, **spart 3'861** | 2'261 → 9 CHF, **spart 2'252** |
+| CO2 Öl: heute → nachher | 9,7 → 0,7 t | 5,3 → 0,0 t |
+| CO2 Gas: heute → nachher | 6,9 → 0,5 t | 3,7 → 0,0 t |
+
+- Bei Gas bleibt die **Grundgebühr von rund 195 CHF/Jahr**, solange der Gasanschluss als Backup bleibt. Wird er später aufgegeben, fällt auch sie weg.
+- Ohne genug flexible Aufträge (Szenario «Nur Jobs mit Frist») spart der Gas-Haushalt nur 2'515 bzw. 1'673 CHF/Jahr.
+- Mit Wärmeabo statt Gratiswärme: Gas spart 1'817 bzw. 1'060 CHF/Jahr.
+- **Reihenfolge der Attraktivität:** Öl vor Gas vor Wärmepumpe. Das bestätigt die Einstiegsstrategie mit Öl, Gas ist der logische zweite Schritt.
+
+Vorbehalte: Die Stufe M gilt laut IWB-Beispiel für ein Einfamilienhaus mit 20'000 kWh. Für das Referenzhaus (≈ 35'000 kWh Gas) ist die Stufe abgeleitet, nicht bestätigt. Anschlussleistung 15 kW (Referenzhaus) ist eine Annahme, 12 kW (Durchschnitt) aus dem IWB-Beispiel. Kesselwirkungsgrade und CO2-Faktoren sind Annahmen.
+
 ## 4. Schnittstellen zu den anderen Säulen (von Kollegen zu bestätigen)
 Diese Werte rechnet nicht die Kundenperspektive. Sie sind nur so weit drin, wie das Kundenangebot von ihnen abhängt.
 

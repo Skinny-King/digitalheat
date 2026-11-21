@@ -23,6 +23,17 @@ P = {
     "heizoel_chf_l": (1.665, "weekend.at, Schweiz Anfang Nov. 2026, 3'000 l (1,66–1,67 CHF/l)"),
     "heizoel_kwh_l": (10.0, "Heizwert Heizöl EL ≈ 10 kWh/l"),
     "wirkungsgrad_oelkessel": (0.85, "ANNAHME, älterer Ölkessel"),
+    # Gas: IWB Tarif ab 01.01.2026, Stufe M (EFH-Beispiel Typ II, 20'000 kWh), inkl. MwSt.
+    "gas_arbeitspreis_chf_kwh": (0.1157, "IWB Gastarife 2026, Stufe M, Erdgas, inkl. MwSt. (iwb.ch)"),
+    "gas_co2_abgabe_chf_kwh": (0.02333, "IWB Gastarife 2026, CO2-Abgabe inkl. MwSt."),
+    "gas_konzession_chf_kwh": (0.0011, "IWB Gastarife 2026, Konzessionsabgabe Kanton BS inkl. MwSt."),
+    "gas_leistungspreis_chf_kw": (12.43, "IWB Gastarife 2026, Stufe M, CHF/kW/Jahr inkl. MwSt."),
+    "gas_min_leistungspreis_chf": (194.58, "IWB Gastarife 2026, Stufe M, Minimum CHF/Jahr inkl. MwSt."),
+    "gas_anschluss_kw_ref": (15.0, "ANNAHME: Referenzhaus 10 kW Heizung + Warmwasser"),
+    "gas_anschluss_kw_durchschnitt": (12.0, "IWB-Beispiel Einfamilienhaus Typ II: 12 kW"),
+    "wirkungsgrad_gaskessel": (0.90, "ANNAHME, Gaskessel (älterer Brennwert/Niedertemperatur)"),
+    "co2_gas_kg_kwh": (0.198, "ANNAHME: Erdgas ≈ 0,198 kg CO2 pro kWh Brennstoff"),
+    "co2_oel_kg_l": (2.65, "ANNAHME: Heizöl EL ≈ 2,65 kg CO2 pro Liter"),
     # --- Haushalt ---
     "ww_kwh_tag": (12.0, "Case"),
     "durchschnitt_waerme_kwh": (17000.0, "ANNAHME aus Raiffeisen-Beispiel: EFH mit 2'000 l Heizöl/Jahr ≈ 20'000 kWh Brennstoff × 0,85"),
@@ -93,6 +104,16 @@ def rechne(ph, haus_name, preis_usd_gpu_h, waermepreis_modell):
         p_waerme = waerme_wp * (1 - w("waermeabo_rabatt"))
     nachher_wp = ph["backup"] * waerme_wp + ph["genutzt"] * p_waerme
     nachher_oel = ph["backup"] * waerme_oel + ph["genutzt"] * p_waerme
+    # Gas: Arbeitspreis + Abgaben pro kWh Gas, plus Leistungspreis (bleibt, solange der Gasanschluss als Backup bleibt)
+    gas_kwh_preis = w("gas_arbeitspreis_chf_kwh") + w("gas_co2_abgabe_chf_kwh") + w("gas_konzession_chf_kwh")
+    anschluss = w("gas_anschluss_kw_ref") if ph["bedarf"] > 25000 else w("gas_anschluss_kw_durchschnitt")
+    leistung = max(w("gas_min_leistungspreis_chf"), anschluss * w("gas_leistungspreis_chf_kw"))
+    gas_vorher_kwh = ph["bedarf"] / w("wirkungsgrad_gaskessel")
+    gas_nachher_kwh = ph["backup"] / w("wirkungsgrad_gaskessel")
+    vorher_gas = gas_vorher_kwh * gas_kwh_preis + leistung
+    nachher_gas = gas_nachher_kwh * gas_kwh_preis + leistung + ph["genutzt"] * p_waerme
+    oel_l_vorher = ph["bedarf"] / (w("heizoel_kwh_l") * w("wirkungsgrad_oelkessel"))
+    oel_l_nachher = ph["backup"] / (w("heizoel_kwh_l") * w("wirkungsgrad_oelkessel"))
     # vermiedene Wärmepumpe (wenn die Serverheizung den Heizungsersatz ersetzt)
     wp_jahr = (w("wp_neu_chf") - w("wp_foerderung_chf")) / w("wp_lebensdauer_j")
     # --- DigitalHeat ---
@@ -123,6 +144,15 @@ def rechne(ph, haus_name, preis_usd_gpu_h, waermepreis_modell):
             "ersparnis_vs_wp_chf": round(vorher_wp - nachher_wp),
             "vorher_oel_chf": round(vorher_oel), "nachher_oel_chf": round(nachher_oel),
             "ersparnis_vs_oel_chf": round(vorher_oel - nachher_oel),
+            "vorher_gas_chf": round(vorher_gas), "nachher_gas_chf": round(nachher_gas),
+            "ersparnis_vs_gas_chf": round(vorher_gas - nachher_gas),
+            "gas_kwh_vorher": round(gas_vorher_kwh), "gas_kwh_nachher": round(gas_nachher_kwh),
+            "gas_rp_pro_kwh_waerme": round(gas_kwh_preis / w("wirkungsgrad_gaskessel") * 100, 2),
+            "co2_gas_t_vorher": round(gas_vorher_kwh * w("co2_gas_kg_kwh") / 1000, 1),
+            "co2_gas_t_nachher": round(gas_nachher_kwh * w("co2_gas_kg_kwh") / 1000, 1),
+            "oel_l_vorher": round(oel_l_vorher), "oel_l_nachher": round(oel_l_nachher),
+            "co2_oel_t_vorher": round(oel_l_vorher * w("co2_oel_kg_l") / 1000, 1),
+            "co2_oel_t_nachher": round(oel_l_nachher * w("co2_oel_kg_l") / 1000, 1),
             "vermiedene_wp_chf_jahr": round(wp_jahr),
             "ersparnis_vs_oel_plus_wp_ersatz_chf": round(vorher_oel - nachher_oel + wp_jahr),
         },
