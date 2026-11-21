@@ -34,6 +34,7 @@ P = {
     "wirkungsgrad_gaskessel": (0.90, "ANNAHME, Gaskessel (älterer Brennwert/Niedertemperatur)"),
     "co2_gas_kg_kwh": (0.198, "ANNAHME: Erdgas ≈ 0,198 kg CO2 pro kWh Brennstoff"),
     "co2_oel_kg_l": (2.65, "ANNAHME: Heizöl EL ≈ 2,65 kg CO2 pro Liter"),
+    "heizstab_chf": (2000.0, "ANNAHME, grobe Schätzung ohne Quelle: Heizstab im Speicher inkl. Einbau 1'000–3'000 CHF"),
     # --- Haushalt ---
     "ww_kwh_tag": (12.0, "Case"),
     "durchschnitt_waerme_kwh": (17000.0, "ANNAHME aus Raiffeisen-Beispiel: EFH mit 2'000 l Heizöl/Jahr ≈ 20'000 kWh Brennstoff × 0,85"),
@@ -112,6 +113,8 @@ def rechne(ph, haus_name, preis_usd_gpu_h, waermepreis_modell):
     gas_nachher_kwh = ph["backup"] / w("wirkungsgrad_gaskessel")
     vorher_gas = gas_vorher_kwh * gas_kwh_preis + leistung
     nachher_gas = gas_nachher_kwh * gas_kwh_preis + leistung + ph["genutzt"] * p_waerme
+    # Gas-Haushalt ohne Gasanschluss: Backup über Heizstab im Speicher (Strom 1:1 zu Wärme), keine Gas-Grundgebühr
+    nachher_gas_heizstab = ph["backup"] * strom + ph["genutzt"] * p_waerme
     oel_l_vorher = ph["bedarf"] / (w("heizoel_kwh_l") * w("wirkungsgrad_oelkessel"))
     oel_l_nachher = ph["backup"] / (w("heizoel_kwh_l") * w("wirkungsgrad_oelkessel"))
     # vermiedene Wärmepumpe (wenn die Serverheizung den Heizungsersatz ersetzt)
@@ -146,6 +149,10 @@ def rechne(ph, haus_name, preis_usd_gpu_h, waermepreis_modell):
             "ersparnis_vs_oel_chf": round(vorher_oel - nachher_oel),
             "vorher_gas_chf": round(vorher_gas), "nachher_gas_chf": round(nachher_gas),
             "ersparnis_vs_gas_chf": round(vorher_gas - nachher_gas),
+            "nachher_gas_heizstab_chf": round(nachher_gas_heizstab),
+            "ersparnis_vs_gas_heizstab_chf": round(vorher_gas - nachher_gas_heizstab),
+            "heizstab_strom_kwh": round(ph["backup"]),
+            "heizstab_einmalig_chf": w("heizstab_chf"),
             "gas_kwh_vorher": round(gas_vorher_kwh), "gas_kwh_nachher": round(gas_nachher_kwh),
             "gas_rp_pro_kwh_waerme": round(gas_kwh_preis / w("wirkungsgrad_gaskessel") * 100, 2),
             "co2_gas_t_vorher": round(gas_vorher_kwh * w("co2_gas_kg_kwh") / 1000, 1),

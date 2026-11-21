@@ -87,6 +87,19 @@ Grundlagen: Heizöl 1,665 CHF/l (Anfang Nov. 2026), 10 kWh/l, Ölkessel 85 % (AN
 - **Konkurrenz Fernwärme:** Im Fernwärmegebiet ist der Anschluss an die Fernwärme die naheliegende Lösung, und kantonale Förderung für dezentrale Heizungen ist dort halbiert. Die Serverheizung zielt deshalb auf **Gas-Haushalte ausserhalb des Fernwärmegebiets** (z. B. in Riehen und Bettingen).
 - **Folge für die Reihenfolge:** Öl bleibt der beste Einstieg für den Pilot (Backup bleibt, höchste Ersparnis). Gas ist danach der grösste Markt in Basel-Stadt, mit klarem Termindruck bis 2037.
 
+**Backup für Gas-Haushalte: Heizstab statt Gas**
+Wird der Gasanschluss aufgegeben, übernimmt ein Heizstab im Wärmespeicher die letzten Prozente (einmalig ≈ 2'000 CHF, ANNAHME).
+
+| Gratiswärme | Referenzhaus | Durchschnitts-EFH |
+|---|---|---|
+| Strom für den Heizstab | 2'203 kWh = 733 CHF/Jahr | 68 kWh = 23 CHF/Jahr |
+| Ersparnis vs. Gas mit Gas-Backup | 4'520 CHF/Jahr | 2'636 CHF/Jahr |
+| **Ersparnis vs. Gas mit Heizstab** (keine Grundgebühr mehr) | **4'325 CHF/Jahr** | **2'819 CHF/Jahr** |
+
+**Wichtig:** Der Heizstab lohnt sich nur, wenn die Serverheizung fast alles deckt. Gibt es zu wenig flexible Aufträge, müsste der Heizstab 6'000–15'000 kWh liefern, und die Ersparnis fällt fast auf null (Referenzhaus 44 CHF/Jahr). Ob ein Heizstab als Notheizung erlaubt ist, muss das AUE BS bestätigen.
+
+**Karte:** `dashboard/karte_fernwaerme.html` zeigt die Gebiete ohne Fernwärme (Energierichtplan BS): vor allem Bruderholz, Riehen, Bettingen und Teile am Westrand von Basel, zusammen rund 5,3 km².
+
 **Warum mit Öl anfangen (Einstiegsstrategie)**
 Ölheizungs-Besitzer in Basel-Stadt sind die Gruppe mit dem grössten Druck und dem grössten Gewinn: höchste Heizkosten (19,6 Rp./kWh Wärme), politisches Ziel «fossilfrei bis 2037», oft alte Häuser, in denen eine Wärmepumpe schlecht passt. Sie wechseln am schnellsten und werden zu sichtbaren Referenzen. Danach folgen die anderen:
 
